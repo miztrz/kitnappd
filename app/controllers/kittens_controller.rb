@@ -40,6 +40,7 @@ class KittensController < ApplicationController
   # PATCH/PUT /kittens/1
   # PATCH/PUT /kittens/1.json
   def update
+
     respond_to do |format|
       if @kitten.update(kitten_params)
         format.html { redirect_to @kitten, notice: 'Kitten was successfully updated.' }
@@ -69,6 +70,6 @@ class KittensController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def kitten_params
-      params.require(:kitten).permit(:name, :breed, :description, :hourly_rate, :daily_rate, :active, images: [])
+      params.require(:kitten).permit(:name, :breed, :description, :hourly_rate, :daily_rate, :active, images: [] )
     end
 end

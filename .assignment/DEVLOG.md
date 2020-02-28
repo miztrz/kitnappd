@@ -11,7 +11,7 @@ This file  will just highlight my steps as I take them.
 * Static home / about page created, route to root home added.
 * Updated the gemfile with the additional libraries I want. Notes as to why in the Gemfile. 
 * Added AWS credentials & tested active storage (adding images to kitten Model). 
-* FIXME Images Not working.
+* Had an issue with multiple images not uploading - Resolved by following directions found here: https://stackoverflow.com/questions/58282845/rails-6-active-storage-could-not-find-or-build-blob-expected-attachable-got
 
 * TODO Install Rspec & configure for minimal tests
 * TODO Install Bootstrap / Jquery / Simpleform properly

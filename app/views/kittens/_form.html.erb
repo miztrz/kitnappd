@@ -15,16 +15,16 @@
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
-		
-	<% if kitten.images.attached? %>
-		<% kitten.images.each do |image| %>
-			<%= image_tag image %>
+	
+	<% if @kitten.images.attached? %>
+		<% @kitten.images.each do |img| %>
+			<%= image_tag img.variant(resize_to_limit: [100, 100]) %>
 		<% end %>
 	<% end %>
 	
 	<div class="field">
 		<%= form.label :images %>
-		<%= form.file_field :images %>
+		<%= form.file_field :images, multiple: true %>
 	</div>
 
   <div class="field">

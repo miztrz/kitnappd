@@ -5,6 +5,12 @@
   <%= @kitten.name %>
 </p>
 
+<% if @kitten.images.attached? %>
+	<% @kitten.images.each do |img| %>
+		<%= image_tag img.variant(resize_to_limit: [100, 100]) %>
+	<% end %>
+<% end %>
+
 <p>
   <strong>Breed:</strong>
   <%= @kitten.breed %>
