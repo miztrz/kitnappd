@@ -69,6 +69,6 @@ class KittensController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def kitten_params
-      params.require(:kitten).permit(:name, :breed, :description, :hourly_rate, :daily_rate, :active)
+      params.require(:kitten).permit(:name, :breed, :description, :hourly_rate, :daily_rate, :active, images: [])
     end
 end

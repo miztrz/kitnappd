@@ -15,6 +15,17 @@
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
+		
+	<% if kitten.images.attached? %>
+		<% kitten.images.each do |image| %>
+			<%= image_tag image %>
+		<% end %>
+	<% end %>
+	
+	<div class="field">
+		<%= form.label :images %>
+		<%= form.file_field :images %>
+	</div>
 
   <div class="field">
     <%= form.label :breed %>
