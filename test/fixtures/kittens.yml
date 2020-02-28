@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  breed: MyString
+  description: MyText
+  hourly_rate: 
+  daily_rate: 
+  active: false
+
+two:
+  name: MyString
+  breed: MyString
+  description: MyText
+  hourly_rate: 
+  daily_rate: 
+  active: false
