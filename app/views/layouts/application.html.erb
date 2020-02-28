@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Kitnappd</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+	<title>kitnappd</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Come rent a kitty today!">
+	<meta name="keywords" content="kitten, rental, cute, kitnappd">
+	<meta name="author" content="© Bianca Wilkinson (<%= Date.today.year %>)">
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
+	
+	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
+<body>
+<header>
+	<%= render 'layouts/nav' %>
+</header>
+<main>
+	<%= render 'layouts/alerts' %>
+	<%= yield %>
+</main>
+<footer class="footer">
+	<%= render 'layouts/footer' %>
+</footer>
+</body>
 </html>
