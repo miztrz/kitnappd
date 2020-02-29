@@ -69,5 +69,8 @@ gem 'jquery-rails'
 # Faker for when I can't be bothered
 gem 'faker'
 
-# Form building made easy
-gem 'simple_form'
+# # Form building made easy
+# gem 'simple_form'
+
+# Authentication management
+gem 'devise'

@@ -1,37 +1,45 @@
-<p id="notice"><%= notice %></p>
+<section class="kitten-cards">
+	<% @kittens.each do |kitten| %>
+		<% if kitten.active? %>
+		<div class="kitten-card">
+<!--			linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%),-->
+			<div class="kitten-card-img" style="background-image: url(<%= card_image_url(kitten) %>)">
+<!--				<div class="kitten-card-row">-->
+<!--					<div class="kitten-card-text flex-grow-1 p-2 h4">-->
+						<%#= kitten.name %>
+<!--					</div>-->
+<!--					<div class="kitten-card-text p-2 h4">-->
+						<%#= kitten.breed %>
+<!--					</div>-->
+				</div>
 
-<h1>Kittens</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Breed</th>
-      <th>Description</th>
-      <th>Hourly rate</th>
-      <th>Daily rate</th>
-      <th>Active</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @kittens.each do |kitten| %>
-      <tr>
-        <td><%= kitten.name %></td>
-        <td><%= kitten.breed %></td>
-        <td><%= kitten.description %></td>
-        <td><%= kitten.hourly_rate %></td>
-        <td><%= kitten.daily_rate %></td>
-        <td><%= kitten.active %></td>
-        <td><%= link_to 'Show', kitten %></td>
-        <td><%= link_to 'Edit', edit_kitten_path(kitten) %></td>
-        <td><%= link_to 'Destroy', kitten, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Kitten', new_kitten_path %>
+		<div class="card-body">
+			<div class="card-title">
+				<h4><%= kitten.name %></h4>
+			</div>
+			<div class="card-subtitle">
+				<h5>Breed: <%= kitten.breed %></h5>
+			</div>
+		</div>
+<!--				<div class="kitten-card-row">-->
+<!--					<div class="kitten-card-text p-2">-->
+<!--						<%#= number_to_currency(kitten.hourly_rate) %> per Hour (60min)-->
+<!--					</div>-->
+<!--					<div class="kitten-card-text p-2">-->
+<!--						<%#= number_to_currency(kitten.daily_rate) %> per Day (24hr)-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+			<div class="card-footer">
+				<div class="btn-group-sm d-flex align-items-center justify-content-around" role="group">
+					<!--				TODO Once authentication is added, add the checks to ensure users can only see the buttons for actions they can do.-->
+					<%= app_icon "https://img.icons8.com/plasticine/25/000000/pencil.png", edit_kitten_path(kitten) %>
+					<%= app_button 'Details', kitten_path(kitten) %>
+					<%= link_to image_tag('https://img.icons8.com/plasticine/25/000000/filled-trash.png'), kitten, class: "btn", role: "button", method: :delete, data: {confirm: 'Are you sure?'} %>
+				</div>
+			
+			</div>
+		</div>
+		<% end %>
+	<% end %>
+</section>

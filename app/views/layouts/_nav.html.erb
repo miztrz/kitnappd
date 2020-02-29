@@ -1,15 +1,4 @@
 <!--TODO Add user nav to navbar-->
-<!--<p class="navbar-text float-right">-->
-<%# if user_signed_in? %>
-<!--    Logged in as <strong><%#= current_user.email %></strong>.-->
-<!--    <%#= image_tag user_avatar(current_user, 20) %> |-->
-<!--    <%#= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |-->
-<%#= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<%# else %>
-<!--    <%#= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |-->
-<%#= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<%# end %>
-<!--</p>-->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
@@ -17,16 +6,34 @@
 	<a class="navbar-brand" href="#">kitnappd</a>
 	
 	<div class="collapse navbar-collapse" id="navbarToggler">
-		<ul class="navbar-nav mr-auto mt-sm-0">
+		<ul class="navbar-nav nav-justified">
+			
 			<li class="nav-item">
-				<a class="nav-link" href="/page/home">Home</a>
+				<%= link_to 'Home', page_home_path, class: "nav-link btn" %>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/page/about">About</a>
+				<%= link_to 'About', page_about_path, class: "nav-link btn" %>
 			</li>
 			<li class="nav-item">
-				<%= link_to 'New Kitten', new_kitten_path, class: "nav-link" %>
+				<%= link_to 'Kittens', kittens_path, class: "nav-link btn" %>
 			</li>
+
+	
+			<% if user_signed_in? %>
+				<li class="nav-item">
+					<%= link_to 'Edit profile', edit_user_registration_path, class: 'navbar-link btn' %>
+				</li>
+				<li class="nav-item">
+					<%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'navbar-link btn' %>
+				</li>
+			<% else %>
+				<li class="nav-item">
+					<%= link_to 'Register', new_user_registration_path, class: 'navbar-link btn' %>
+				</li>
+				<li class="nav-item">
+					<%= link_to 'Login', new_user_session_path, class: 'navbar-link btn' %>
+				</li>
+			<% end %>
 		</ul>
 		<!--		TODO Search function in Nav bar-->
 		<!--		<form class="form-inline my-2 my-lg-0">-->

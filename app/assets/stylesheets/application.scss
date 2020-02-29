@@ -1,6 +1,17 @@
 //@import 'page';
-//@import 'kittens';
+@import 'kittens';
 
 @import 'theme/variables_dark';
 @import 'bootstrap';
 @import 'theme/bootswatch_dark';
+
+body {
+  max-height: 100vh;
+  }
+
+main {
+  margin-top: 42.5px;
+  scroll-margin-top: 42.5px;
+  padding: 2rem;
+  min-height: calc(100vh - 4rem - 45px);
+  }
