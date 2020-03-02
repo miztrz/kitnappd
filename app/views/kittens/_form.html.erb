@@ -1,54 +1,64 @@
 <%= form_with(model: kitten, local: true) do |form| %>
-  <% if kitten.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(kitten.errors.count, "error") %> prohibited this kitten from being saved:</h2>
+	
+	<% if kitten.errors.any? %>
+		<div id="error_explanation" class="alert alert-warning alert-dismissible fade show" role="alert" >
+			
+			<h5><%= pluralize(kitten.errors.count, "error") %> prohibited this kitten from being saved:</h5>
+			
+			<ul>
+				<% kitten.errors.full_messages.each do |message| %>
+					<li class="list-unstyled"><%= message %></li>
+				<% end %>
+			</ul>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	<% end %>
 
-      <ul>
-        <% kitten.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
+  <div class="form-group row">
+    <%= form.label :name, class: "col-sm-2 col-form-label"  %>
     <%= form.text_field :name %>
   </div>
 	
 	<% kitten_images(@kitten) %>
 	
-	<div class="field">
-		<%= form.label :images %>
+	<div class="form-group row">
+		<%= form.label :images, class: "col-sm-2 col-form-label"  %>
 		<%= form.file_field :images, multiple: true %>
 	</div>
 
-  <div class="field">
-    <%= form.label :breed %>
+  <div class="form-group row">
+    <%= form.label :breed, class: "col-sm-2 col-form-label"  %>
     <%= form.text_field :breed %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
+  <div class="form-group row">
+    <%= form.label :description, class: "col-sm-2 col-form-label"  %>
     <%= form.text_area :description %>
   </div>
 
-  <div class="field">
-    <%= form.label :hourly_rate %>
+  <div class="form-group row">
+    <%= form.label :hourly_rate, class: "col-sm-2 col-form-label"  %>
     <%= form.text_field :hourly_rate %>
   </div>
 
-  <div class="field">
-    <%= form.label :daily_rate %>
+  <div class="form-group row">
+    <%= form.label :daily_rate, class: "col-sm-2 col-form-label" %>
     <%= form.text_field :daily_rate %>
   </div>
 
-  <div class="field">
+  <div class="form-group row">
     <%= form.label :active %>
     <%= form.check_box :active %>
   </div>
+	
+
 
   <div class="actions">
     <%= form.submit %>
   </div>
+	
+
+	
 <% end %>

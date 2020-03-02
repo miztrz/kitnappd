@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+	<strong>Owner:</strong>
+	<%= @kitten.user_id %>
+</p>
+
+<p>
   <strong>Name:</strong>
   <%= @kitten.name %>
 </p>
@@ -31,10 +36,7 @@
   <%= @kitten.daily_rate %>
 </p>
 
-<p>
-  <strong>Active:</strong>
-  <%= @kitten.active %>
-</p>
-
-<%= link_to 'Edit', edit_kitten_path(@kitten) %> |
+<% if user_signed_in? && @kitten.user_id == current_user.id %>
+ <%= link_to 'Edit', edit_kitten_path(@kitten) %> |
+<% end %>
 <%= link_to 'Back', kittens_path %>

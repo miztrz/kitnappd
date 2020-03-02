@@ -1,3 +1,13 @@
+5.times do
+	User.create(
+			name: Faker::FunnyName.three_word_name,
+			email: Faker::Internet.unique.safe_email,
+			password: 'pwd123'
+	)
+end
+
+puts "5 fake users created"
+
 rand(20..50).times do
 	hourly = rand(10..25)
 	daily = hourly * 10
@@ -7,6 +17,9 @@ rand(20..50).times do
 			description: Faker::GreekPhilosophers.quote,
 			hourly_rate: hourly,
 			daily_rate: daily,
-			active: rand(1..2).odd?
+			active: rand(1..2).odd?,
+			user_id: rand(1..5)
 	)
 end
+
+puts "#{Kitten.all.count} kittens created."

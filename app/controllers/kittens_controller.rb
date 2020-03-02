@@ -1,30 +1,25 @@
 class KittensController < ApplicationController
   before_action :set_kitten, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :check_user, only: [:edit, :update, :destroy]
 
-  # GET /kittens
-  # GET /kittens.json
   def index
     @kittens = Kitten.all
   end
 
-  # GET /kittens/1
-  # GET /kittens/1.json
   def show
   end
 
-  # GET /kittens/new
   def new
     @kitten = Kitten.new
   end
 
-  # GET /kittens/1/edit
   def edit
   end
 
-  # POST /kittens
-  # POST /kittens.json
   def create
     @kitten = Kitten.new(kitten_params)
+    @kitten.user_id = current_user.id
 
     respond_to do |format|
       if @kitten.save
@@ -37,8 +32,6 @@ class KittensController < ApplicationController
     end
   end
 
-  # PATCH/PUT /kittens/1
-  # PATCH/PUT /kittens/1.json
   def update
 
     respond_to do |format|
@@ -52,8 +45,6 @@ class KittensController < ApplicationController
     end
   end
 
-  # DELETE /kittens/1
-  # DELETE /kittens/1.json
   def destroy
     @kitten.destroy
     respond_to do |format|
@@ -63,13 +54,17 @@ class KittensController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_kitten
       @kitten = Kitten.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def kitten_params
-      params.require(:kitten).permit(:name, :breed, :description, :hourly_rate, :daily_rate, :active, images: [] )
+      params.require(:kitten).permit(:name, :breed, :description, :hourly_rate, :daily_rate, :active, :user_id , images: [])
     end
+
+  def check_user
+    if current_user.id != @kitten.user_id
+      redirect_to root_url, alert: "That is not your kitten."
+    end
+  end
 end

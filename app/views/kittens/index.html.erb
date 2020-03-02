@@ -1,9 +1,19 @@
 <section class="kitten-cards">
-	<% @kittens.each do |kitten| %>
+	<% @kittens.order(:id).each do |kitten| %>
 		<% if kitten.active? %>
 		<div class="kitten-card">
-<!--			linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%),-->
+			<a href="<%= url_for(kitten_path(kitten)) %>" class="list-unstyled">
+				<!--			linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%),-->
 			<div class="kitten-card-img" style="background-image: url(<%= card_image_url(kitten) %>)">
+				
+				
+				<% if user_signed_in? && kitten.user_id == current_user.id %>
+					<div class="text-center justify-content-between">
+						
+						<%= app_icon "https://img.icons8.com/plasticine/25/000000/pencil.png", edit_kitten_path(kitten) %>
+						<%= link_to image_tag('https://img.icons8.com/plasticine/25/000000/filled-trash.png'), kitten, class: "btn", role: "button", method: :delete, data: {confirm: 'Are you sure?'} %>
+					</div>
+				<% end %>
 <!--				<div class="kitten-card-row">-->
 <!--					<div class="kitten-card-text flex-grow-1 p-2 h4">-->
 						<%#= kitten.name %>
@@ -30,16 +40,13 @@
 <!--					</div>-->
 <!--				</div>-->
 <!--			</div>-->
-			<div class="card-footer">
-				<div class="btn-group-sm d-flex align-items-center justify-content-around" role="group">
-					<!--				TODO Once authentication is added, add the checks to ensure users can only see the buttons for actions they can do.-->
-					<%= app_icon "https://img.icons8.com/plasticine/25/000000/pencil.png", edit_kitten_path(kitten) %>
-					<%= app_button 'Details', kitten_path(kitten) %>
-					<%= link_to image_tag('https://img.icons8.com/plasticine/25/000000/filled-trash.png'), kitten, class: "btn", role: "button", method: :delete, data: {confirm: 'Are you sure?'} %>
-				</div>
 			
-			</div>
+			
+			
+			</a>
 		</div>
+
+		
 		<% end %>
 	<% end %>
 </section>
