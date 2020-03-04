@@ -2,11 +2,8 @@
 	<% @kittens.order(:id).each do |kitten| %>
 		<% if kitten.active? %>
 		<div class="kitten-card">
-			<a href="<%= url_for(kitten_path(kitten)) %>" class="list-unstyled">
-				<!--			linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%),-->
+			<a href="<%= url_for(kitten_path(kitten)) %>">
 			<div class="kitten-card-img" style="background-image: url(<%= card_image_url(kitten) %>)">
-				
-				
 				<% if user_signed_in? && kitten.user_id == current_user.id %>
 					<div class="text-center justify-content-between">
 						
@@ -14,36 +11,30 @@
 						<%= link_to image_tag('https://img.icons8.com/plasticine/25/000000/filled-trash.png'), kitten, class: "btn", role: "button", method: :delete, data: {confirm: 'Are you sure?'} %>
 					</div>
 				<% end %>
-<!--				<div class="kitten-card-row">-->
-<!--					<div class="kitten-card-text flex-grow-1 p-2 h4">-->
-						<%#= kitten.name %>
-<!--					</div>-->
-<!--					<div class="kitten-card-text p-2 h4">-->
-						<%#= kitten.breed %>
-<!--					</div>-->
 				</div>
 
 		<div class="card-body">
-			<div class="card-title">
-				<h4><%= kitten.name %></h4>
+			<div class="kitten-name">
+				<p><%= kitten.name %></p>
 			</div>
-			<div class="card-subtitle">
-				<h5>Breed: <%= kitten.breed %></h5>
+			<div class="kitten-price">
+				<table>
+					<tr>
+					<th>Hourly</th>
+					<td><%= hourly_rate(kitten) %></td>
+					</tr>
+					<tr>
+						<th>Daily</th>
+						<td><%= daily_rate(kitten) %></td>
+					</tr>
+				</table>
+			</div>
+			
+			<div class="kitten-breed">
+				<p><%= kitten.breed %></p>
 			</div>
 		</div>
-<!--				<div class="kitten-card-row">-->
-<!--					<div class="kitten-card-text p-2">-->
-<!--						<%#= number_to_currency(kitten.hourly_rate) %> per Hour (60min)-->
-<!--					</div>-->
-<!--					<div class="kitten-card-text p-2">-->
-<!--						<%#= number_to_currency(kitten.daily_rate) %> per Day (24hr)-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
-			
-			
-			
-			</a>
+		</a>
 		</div>
 
 		

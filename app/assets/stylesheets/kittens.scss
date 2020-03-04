@@ -2,6 +2,8 @@
 // They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+@import 'theme/variables_light';
+
 .kitten-cards {
   display: grid;
   grid-gap: 3rem;
@@ -9,37 +11,74 @@
   }
 
 .kitten-card {
-  box-shadow: 0 0 1rem lightgrey;
-  border-radius: 1rem;
+  box-shadow: 0 0 .5rem $secondary;
+  border-color: $primary;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: .5rem;
+  a:hover {
+	text-decoration: none;
+	};
   }
 
 .kitten-card-img {
   background-repeat: no-repeat;
   background-size: cover;
   background-blend-mode: multiply;
-  height: 15em;
-  border-radius: 1rem 1rem 0 0;
+  height: 150px;
+  border-radius: .5rem .5rem 0 0;
   display: block;
+  border-bottom-style: solid;
+  border-bottom-color: $primary;
+  border-bottom-width: 1px;
+  }
+
+.kitten-card:hover {
+  border-style: inset;
+  .kitten-card-img {
+	border-bottom-style: inset;
+	}
   }
 
 @media only screen and (max-height: 600px) {
   .kitten-cards {
 	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 	}
-  .kitten-card-img {
-	height: 9em;
+  //.kitten-card-img {
+	//height: 9em;
+	//}
+  }
+
+.kitten-name {
+  margin-top: -25px;
+  background-color: $primary;
+  color: $light;
+  text-align: center;
+  font-size: xx-large;
+  box-shadow: 0 0 .5rem $primary;
+  border-radius: .2rem;
+  }
+
+.kitten-price {
+  display: flex;
+  justify-content: space-evenly;
+  table {
+	color: $primary;
+	font-size: large;
+	th {
+	  padding-right: 2rem;
+	  }
+	td {
+	  padding-left: 2rem;
+	  text-align: right;
+	  }
 	}
   }
 
-.kitten-card-description {
+.kitten-breed {
   display: block;
-  }
-
-.kitten-card-row {
-  padding: 1rem;
-  display: flex;
-  color: white;
-  align-items: flex-end;
-  align-self: stretch;
-  height: 100%;
+  margin: 0;
+  background-color: $primary;
+  color: $light;
+  text-align: center;
   }
