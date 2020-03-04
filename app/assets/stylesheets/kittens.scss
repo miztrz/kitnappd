@@ -21,6 +21,16 @@
 	};
   }
 
+.icon-group {
+  display: inline-block;
+  float: right;
+  }
+
+.icon {
+  background: radial-gradient(circle, $primary 0%, rgba(0,0,0,0) 40%);
+  border-radius: 50%;
+  }
+
 .kitten-card-img {
   background-repeat: no-repeat;
   background-size: cover;
@@ -28,35 +38,29 @@
   height: 150px;
   border-radius: .5rem .5rem 0 0;
   display: block;
-  border-bottom-style: solid;
-  border-bottom-color: $primary;
-  border-bottom-width: 1px;
   }
 
 .kitten-card:hover {
   border-style: inset;
-  .kitten-card-img {
-	border-bottom-style: inset;
-	}
   }
 
 @media only screen and (max-height: 600px) {
   .kitten-cards {
 	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 	}
-  //.kitten-card-img {
-	//height: 9em;
-	//}
   }
 
 .kitten-name {
-  margin-top: -25px;
+  margin: -20px auto 0 auto;
   background-color: $primary;
   color: $light;
   text-align: center;
   font-size: xx-large;
   box-shadow: 0 0 .5rem $primary;
   border-radius: .2rem;
+  border-bottom-width: 1px;
+  padding-bottom: .5rem;
+
   }
 
 .kitten-price {
@@ -77,8 +81,14 @@
 
 .kitten-breed {
   display: block;
-  margin: 0;
-  background-color: $primary;
+  padding: 0 1rem 0 1rem;
+  width: fit-content;
+  background-color: $secondary;
+  box-shadow: 0 0 1rem $secondary;
+  border-radius: 5px;
   color: $light;
-  text-align: center;
+  font-style: italic;
+  margin: -20px auto 0 auto;
+  font-size: large;
   }
+

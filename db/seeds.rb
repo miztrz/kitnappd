@@ -8,13 +8,13 @@ end
 
 puts "5 fake users created"
 
-rand(20..50).times do
+rand(5..10).times do
 	hourly = rand(10..25)
 	daily = hourly * 10
 	Kitten.create(
-			name: "#{Faker::Creature::Cat.name}" ,
-			breed: "#{Faker::Creature::Cat.breed}",
-			description: Faker::GreekPhilosophers.quote,
+			name: Faker::Creature::Cat.name ,
+			breed: Faker::Creature::Cat.breed,
+			description: "#{Faker::Lorem.paragraph} " * rand(3..10),
 			hourly_rate: hourly,
 			daily_rate: daily,
 			active: rand(1..2).odd?,
