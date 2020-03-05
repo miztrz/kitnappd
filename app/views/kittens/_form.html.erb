@@ -21,7 +21,11 @@
     <%= form.text_field :name %>
   </div>
 	
-	<% kitten_images(@kitten) %>
+	<% if kitten.images.attached? %>
+		<% kitten.images.each do |img| %>
+			<%= image_tag img %>
+		<% end %>
+	<% end %>
 	
 	<div class="form-group row">
 		<%= form.label :images, class: "col-sm-2 col-form-label"  %>

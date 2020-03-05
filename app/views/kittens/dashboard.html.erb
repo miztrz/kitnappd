@@ -1,3 +1,9 @@
+<% @page_title = "Dashboard" %>
+
+<section class="owner-details">
+	<%= current_user.name %>
+</section>
+
 <section class="kitten-cards">
 	<% @kittens.each do |kitten| %>
 		<%= render 'card', kitten: kitten %>

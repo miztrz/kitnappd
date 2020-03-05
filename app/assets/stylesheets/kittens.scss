@@ -44,12 +44,6 @@
   border-style: inset;
   }
 
-@media only screen and (max-height: 600px) {
-  .kitten-cards {
-	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-	}
-  }
-
 .kitten-name {
   margin: -20px auto 0 auto;
   background-color: $primary;
@@ -88,7 +82,7 @@
   border-radius: 5px;
   color: $light;
   font-style: italic;
-  margin: -20px auto 0 auto;
+  margin: -10px auto 0 auto;
   font-size: large;
   }
 

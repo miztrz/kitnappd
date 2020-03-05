@@ -3,7 +3,7 @@ class KittensController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :check_user, only: [:edit, :update, :destroy]
 
-  def owner
+  def dashboard
     @kittens = Kitten.where(user_id: current_user.id).order(:id)
   end
 

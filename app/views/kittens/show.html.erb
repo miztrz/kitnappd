@@ -14,6 +14,8 @@
 	<% @kitten.images.each do |img| %>
 		<%= image_tag img.variant(resize_to_limit: [100, 100]) %>
 	<% end %>
+<% else %>
+	<img src="https://placekitten.com/#{rand(200..400)}/#{rand(200..400)}" />
 <% end %>
 
 <p>
