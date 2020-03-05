@@ -10,6 +10,8 @@
   <%= @kitten.name %>
 </p>
 
+<!--FIXME - Placekitten images aren't loading properly on the show.html.erb page-->
+<!--TODO - Add carousel for multiple images-->
 <% if @kitten.images.attached? %>
 	<% @kitten.images.each do |img| %>
 		<%= image_tag img.variant(resize_to_limit: [100, 100]) %>
@@ -42,3 +44,50 @@
  <%= link_to 'Edit', edit_kitten_path(@kitten) %> |
 <% end %>
 <%= link_to 'Back', kittens_path %>
+<% if !(user_signed_in? && @kitten.user_id == current_user.id) %>
+| <%=  link_to 'Request Booking', new_booking_path(@kitten)  %>
+<%  end %>
+
+<h2>Booking Request</h2>
+<%= form_with(model: [@kitten, @kitten.bookings.build], local:true) do |form| %>
+	<%# if booking.errors.any? %>
+<!--		<div id="error_explanation">-->
+<!--			<h2><%#= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>-->
+			
+<!--			<ul>-->
+				<%# booking.errors.full_messages.each do |message| %>
+<!--					<li><%#= message %></li>-->
+				<%# end %>
+<!--			</ul>-->
+<!--		</div>-->
+	<%# end %>
+	
+<!--	<div class="field">-->
+		<%#= form.label :title %>
+		<%#= form.text_field :title %>
+<!--	</div>-->
+	
+	<div class="field">
+		<%= form.label :start_time %>
+		<%= form.datetime_select :start_time %>
+	</div>
+	
+	<div class="field">
+		<%= form.label :end_time %>
+		<%= form.datetime_select :end_time %>
+	</div>
+
+<!--	<div class="field">-->
+		<%#= form.label :accepted %>
+		<%#= form.check_box :accepted %>
+<!--	</div>-->
+
+<!--	<div class="field">-->
+		<%#= form.label :total %>
+		<%#= form.text_field :total %>
+<!--	</div>-->
+	
+	<div class="actions">
+		<%= form.submit %>
+	</div>
+<% end %>

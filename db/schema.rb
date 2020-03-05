@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_05_122453) do
+ActiveRecord::Schema.define(version: 2020_03_05_130824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,7 +45,9 @@ ActiveRecord::Schema.define(version: 2020_03_05_122453) do
     t.money "total", scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
     t.index ["kitten_id"], name: "index_bookings_on_kitten_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "kittens", force: :cascade do |t|
@@ -81,5 +83,6 @@ ActiveRecord::Schema.define(version: 2020_03_05_122453) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "kittens"
+  add_foreign_key "bookings", "users"
   add_foreign_key "kittens", "users"
 end
