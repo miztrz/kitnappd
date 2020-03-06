@@ -26,8 +26,9 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @kitten = Kitten.find(params[:kitten_id])
-    @booking = @kitten.bookings.create(booking_params)
+    @booking = @kitten.bookings.build(booking_params)
     @booking.user_id = current_user.id
+    @booking.save
     redirect_to kitten_path(@kitten)
 
 

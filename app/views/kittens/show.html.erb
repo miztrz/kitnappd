@@ -2,7 +2,7 @@
 
 <p>
 	<strong>Owner:</strong>
-	<%= @kitten.user_id %>
+	<%= @kitten.user.name %>
 </p>
 
 <p>
@@ -10,15 +10,15 @@
   <%= @kitten.name %>
 </p>
 
-<!--FIXME - Placekitten images aren't loading properly on the show.html.erb page-->
-<!--TODO - Add carousel for multiple images-->
+<div class="kitten-imgs">
 <% if @kitten.images.attached? %>
 	<% @kitten.images.each do |img| %>
-		<%= image_tag img.variant(resize_to_limit: [100, 100]) %>
+		<%= image_tag img, class: "kitten-img" %>
 	<% end %>
 <% else %>
-	<img src="https://placekitten.com/#{rand(200..400)}/#{rand(200..400)}" />
+	<%= image_tag placekitten, class: "kitten-img" %>
 <% end %>
+</div>
 
 <p>
   <strong>Breed:</strong>
@@ -48,7 +48,6 @@
 | <%=  link_to 'Request Booking', new_booking_path(@kitten)  %>
 <%  end %>
 
-<h2>Booking Request</h2>
 <%= form_with(model: [@kitten, @kitten.bookings.build], local:true) do |form| %>
 	<%# if booking.errors.any? %>
 <!--		<div id="error_explanation">-->
