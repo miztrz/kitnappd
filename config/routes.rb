@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 	  resources :bookings
   end
 
-
   get 'page/home'
   get 'page/about'
   get 'dashboard' => 'kittens#dashboard'

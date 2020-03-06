@@ -23,7 +23,7 @@
       <imported>true</imported>
       <remarks>$PROJECT_DIR$/config/database.yml</remarks>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/kitnappd_production</jdbc-url>
+      <jdbc-url>jdbc:postgresql://ec2-50-17-178-87.compute-1.amazonaws.com:5432/d69dujknd4pq50</jdbc-url>
     </data-source>
   </component>
 </project>

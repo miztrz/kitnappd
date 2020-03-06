@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
   # GET /bookings/new
   def new
     @booking = Booking.new
-    @booking.user_id = current_user.id
+    # @booking.user_id = current_user.id
   end
 
   # GET /bookings/1/edit
@@ -27,18 +27,19 @@ class BookingsController < ApplicationController
   def create
     @kitten = Kitten.find(params[:kitten_id])
     @booking = @kitten.bookings.create(booking_params)
+    @booking.user_id = current_user.id
     redirect_to kitten_path(@kitten)
 
 
-    respond_to do |format|
-      if @booking.save
-        format.html { redirect_to @booking, notice: 'Booking request was successfully created.' }
-        format.json { render :show, status: :created, location: @booking }
-      else
-        format.html { render :new }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @booking.save
+    #     format.html { redirect_to @booking, notice: 'Booking request was successfully created.' }
+    #     format.json { render :show, status: :created, location: @booking }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @booking.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /bookings/1
