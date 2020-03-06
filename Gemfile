@@ -57,7 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 ### My config below
 
 # Connection to AWS for image storing
-gem "aws-sdk-s3"
+gem 'aws-sdk-s3'
 
 # Use Active Storage variant (image resizing done smart)
 gem 'image_processing', '~> 1.2'
@@ -69,8 +69,8 @@ gem 'jquery-rails'
 # Faker for when I can't be bothered
 gem 'faker'
 
-# # Form building made easy
-# gem 'simple_form'
-
 # Authentication management
 gem 'devise'
+
+# Calendar to manage bookings associated with the kitten renting.
+gem 'simple_calendar'

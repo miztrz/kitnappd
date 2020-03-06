@@ -14,7 +14,8 @@ This file  will just highlight my steps as I take them.
 * Had an issue with multiple images not uploading - Resolved by following directions found here: https://stackoverflow.com/questions/58282845/rails-6-active-storage-could-not-find-or-build-blob-expected-attachable-got
 * Updated active flag on Kitten model to default to true.
 * Bootstrap / jquery working. Loaded a default dark theme from Bootswatch, with the matching light available too if I can work out the javascript behind it.
-OPTIMIZE Add JS to determine dark mode.
-
+* Mostly worked on formatting the views, created a "kittens" card which is really effective, as well as a dashboard view which is yet to be completed.
+* BRANCHED - adding simple_calendar for bookings.
+* OPTIMIZE Add JS to determine dark mode.
 * TODO Simpleform properly
 * TODO Install Rspec & configure for minimal tests

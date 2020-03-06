@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+	resources :kittens, :bookings
   devise_for :users
-  resources :kittens
+  resources :kittens do
+	  resources :bookings
+  end
+
   get 'page/home'
   get 'page/about'
   get 'dashboard' => 'kittens#dashboard'

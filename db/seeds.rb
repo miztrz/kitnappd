@@ -8,7 +8,7 @@ end
 
 puts "5 fake users created"
 
-rand(5..10).times do
+50.times do
 	hourly = rand(10..25)
 	daily = hourly * 10
 	Kitten.create(

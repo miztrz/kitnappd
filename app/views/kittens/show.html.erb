@@ -2,7 +2,7 @@
 
 <p>
 	<strong>Owner:</strong>
-	<%= @kitten.user_id %>
+	<%= @kitten.user.name %>
 </p>
 
 <p>
@@ -10,13 +10,15 @@
   <%= @kitten.name %>
 </p>
 
+<div class="kitten-imgs">
 <% if @kitten.images.attached? %>
 	<% @kitten.images.each do |img| %>
-		<%= image_tag img.variant(resize_to_limit: [100, 100]) %>
+		<%= image_tag img, class: "kitten-img" %>
 	<% end %>
 <% else %>
-	<img src="https://placekitten.com/#{rand(200..400)}/#{rand(200..400)}" />
+	<%= image_tag placekitten, class: "kitten-img" %>
 <% end %>
+</div>
 
 <p>
   <strong>Breed:</strong>
@@ -42,3 +44,49 @@
  <%= link_to 'Edit', edit_kitten_path(@kitten) %> |
 <% end %>
 <%= link_to 'Back', kittens_path %>
+<% if !(user_signed_in? && @kitten.user_id == current_user.id) %>
+| <%=  link_to 'Request Booking', new_booking_path(@kitten)  %>
+<%  end %>
+
+<%= form_with(model: [@kitten, @kitten.bookings.build], local:true) do |form| %>
+	<%# if booking.errors.any? %>
+<!--		<div id="error_explanation">-->
+<!--			<h2><%#= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>-->
+			
+<!--			<ul>-->
+				<%# booking.errors.full_messages.each do |message| %>
+<!--					<li><%#= message %></li>-->
+				<%# end %>
+<!--			</ul>-->
+<!--		</div>-->
+	<%# end %>
+	
+<!--	<div class="field">-->
+		<%#= form.label :title %>
+		<%#= form.text_field :title %>
+<!--	</div>-->
+	
+	<div class="field">
+		<%= form.label :start_time %>
+		<%= form.datetime_select :start_time %>
+	</div>
+	
+	<div class="field">
+		<%= form.label :end_time %>
+		<%= form.datetime_select :end_time %>
+	</div>
+
+<!--	<div class="field">-->
+		<%#= form.label :accepted %>
+		<%#= form.check_box :accepted %>
+<!--	</div>-->
+
+<!--	<div class="field">-->
+		<%#= form.label :total %>
+		<%#= form.text_field :total %>
+<!--	</div>-->
+	
+	<div class="actions">
+		<%= form.submit %>
+	</div>
+<% end %>
