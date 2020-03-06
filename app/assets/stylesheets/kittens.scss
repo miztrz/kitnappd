@@ -1,16 +1,31 @@
-// Place all the styles related to the Kittens controller here.
-// They will automatically be included in application.scss.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-
 @import 'theme/variables_light';
+
+// Code below relates to the kitten show page.
+
+.kitten-imgs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  }
+
+.kitten-img {
+  width: 14rem;
+  height: 14rem;
+  border-radius: .5rem;
+  border-style: solid;
+  border-color: $primary;
+  border-width: .5px;
+  }
+
+// Code below relates to the kitten cards on kitten index page & user dashboard
 
 .kitten-cards {
   display: grid;
-  grid-gap: 3rem;
+  grid-gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   }
 
 .kitten-card {
+  place-self: center stretch;
   box-shadow: 0 0 .5rem $secondary;
   border-color: $primary;
   border-width: 1px;
@@ -19,6 +34,12 @@
   a:hover {
 	text-decoration: none;
 	};
+  }
+
+.kitten-card:hover {
+  box-shadow: 0 0 1rem $primary;
+  width: 102%;
+  height: 102%;
   }
 
 .icon-group {
@@ -40,16 +61,11 @@
   display: block;
   }
 
-.kitten-card:hover {
-  border-style: inset;
-  }
-
 .kitten-name {
   margin: -20px auto 0 auto;
   background-color: $primary;
   color: $light;
   text-align: center;
-  font-size: xx-large;
   box-shadow: 0 0 .5rem $primary;
   border-radius: .2rem;
   border-bottom-width: 1px;
@@ -77,12 +93,13 @@
   display: block;
   padding: 0 1rem 0 1rem;
   width: fit-content;
+  max-width: 80%;
   background-color: $secondary;
   box-shadow: 0 0 1rem $secondary;
   border-radius: 5px;
   color: $light;
   font-style: italic;
   margin: -10px auto 0 auto;
-  font-size: large;
+  text-align: center;
   }
 
