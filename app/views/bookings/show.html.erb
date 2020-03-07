@@ -1,34 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+<table>
+	<tr>
+		<th>Title<br></th>
+		<th><%= booking.title %><br></th>
+	</tr>
+	<tr>
+		<td>Kitten</td>
+		<td><%= booking.kitten.name %></td>
+	</tr>
+	<tr>
+		<td>Booking User</td>
+		<td><%= booking.user.name %></td>
+	</tr>
+	<tr>
+		<td>Kitten Owner</td>
+		<td><%= booking.kitten.user.name %></td>
+	</tr>
+	<tr>
+		<td>Start Date / Time</td>
+		<td><%= booking.start_time %></td>
+	</tr>
+	<tr>
+		<td>End Date / Time</td>
+		<td><%= booking.end_time %></td>
+	</tr>
+	<tr>
+		<td>Total Charge</td>
+		<td><%= booking.total %></td>
+	</tr>
+	<tr>
+		<td>Confirmed<br></td>
+		<td><%= booking.accepted %></td>
+	</tr>
+</table>
+</div>
 
-<p>
-  <strong>Kitten:</strong>
-  <%= @booking.kitten_id %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @booking.title %>
-</p>
-
-<p>
-  <strong>Start time:</strong>
-  <%= @booking.start_time %>
-</p>
-
-<p>
-  <strong>End time:</strong>
-  <%= @booking.end_time %>
-</p>
-
-<p>
-  <strong>Accepted:</strong>
-  <%= @booking.accepted %>
-</p>
-
-<p>
-  <strong>Total:</strong>
-  <%= @booking.total %>
-</p>
-
-<%= link_to 'Edit', edit_booking_path(@booking) %> |
-<%= link_to 'Back', bookings_path %>
+<!--<%#= link_to 'Edit', edit_booking_path(booking) %> |-->
+<%#= link_to 'Back', bookings_path %>

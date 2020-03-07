@@ -72,5 +72,8 @@ gem 'faker'
 # Authentication management
 gem 'devise'
 
-# Calendar to manage bookings associated with the kitten renting.
+# Calendar to manage bookings associated with the kitten renting
 gem 'simple_calendar'
+
+# Time Difference to humanize the time of booking
+gem 'time_difference'

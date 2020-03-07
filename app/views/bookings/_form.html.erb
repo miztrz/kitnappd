@@ -1,25 +1,4 @@
-<%= form_with(model: [ @kitten, @kitten.booking.build ], local: true) do |form| %>
-  <% if booking.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
-
-      <ul>
-        <% booking.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :kitten_id %>
-    <%= form.text_field :kitten_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+<%= form_with(model: [ @kitten, @kitten.bookings.build ], local: true) do |form| %>
 
   <div class="field">
     <%= form.label :start_time %>
@@ -32,13 +11,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :accepted %>
-    <%= form.check_box :accepted %>
-  </div>
-
-  <div class="field">
     <%= form.label :total %>
-    <%= form.text_field :total %>
+    <%= form.text_field :total, readonly:true %>
   </div>
 
   <div class="actions">

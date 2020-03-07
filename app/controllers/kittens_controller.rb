@@ -4,7 +4,7 @@ class KittensController < ApplicationController
   before_action :check_user, only: [:edit, :update, :destroy]
 
   def dashboard
-    @kittens = Kitten.where(user_id: current_user.id).order(:id)
+    @kittens = Kitten.where(user_id: current_user.id).order(active: :desc)
   end
 
   def index
