@@ -22,6 +22,7 @@ $bootstrap-xl: 1200px;
   
   @media (min-width: $bootstrap-lg) {
 	width: 75vw;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
 	}
   }
 

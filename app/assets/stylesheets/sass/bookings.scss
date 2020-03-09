@@ -1,0 +1,30 @@
+// Booking in
+
+// Use Bootstrap breakpoints for consistency.
+$bootstrap-sm: 576px;
+$bootstrap-md: 768px;
+$bootstrap-lg: 992px;
+$bootstrap-xl: 1200px;
+
+.booking-in-cards {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: 1fr;
+  margin: 0 auto 0 auto;
+  }
+
+.booking-in-card {
+  place-self: center stretch;
+  box-shadow: 0 0 .5rem $secondary;
+  border-color: $primary;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: .5rem;
+  a:hover {
+	text-decoration: none;
+	};
+  }
+
+.booking-in-card:hover {
+  box-shadow: 0 0 1rem $primary;
+  }
