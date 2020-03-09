@@ -2,18 +2,38 @@
 
 // Kitten show page.
 
-.kitten-imgs {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+// Use Bootstrap breakpoints for consistency.
+$bootstrap-sm: 576px;
+$bootstrap-md: 768px;
+$bootstrap-lg: 992px;
+$bootstrap-xl: 1200px;
+
+// Crop thumbnail images.
+#gallery {
+  img {
+	height: 75vw;
+	object-fit: cover;
+	
+	@media (min-width: $bootstrap-sm) {
+	  height: 35vw;
+	  }
+	
+	@media (min-width: $bootstrap-lg) {
+	  height: 18vw;
+	  }
+	}
   }
 
-.kitten-img {
-  width: 14rem;
-  height: 14rem;
-  border-radius: .5rem;
-  border-style: solid;
-  border-color: $primary;
-  border-width: .5px;
+  // Crop images in the carousel
+.carousel-item {
+  img {
+	height: 60vw;
+	object-fit: cover;
+	
+	@media (min-width: $bootstrap-sm) {
+	  height: 350px;
+	  }
+	}
   }
 
 // Code below relates to the kitten cards on kitten index page & user dashboard
@@ -22,6 +42,20 @@
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  margin: 0 auto 0 auto;
+  
+  @media (min-width: $bootstrap-md) {
+	width: 80vw;
+	}
+  
+  @media (min-width: $bootstrap-lg) {
+	width: 75vw;
+	}
+  
+  }
+
+#dashboard {
+  max-width: $bootstrap-sm;
   }
 
 .kitten-card {
@@ -38,8 +72,6 @@
 
 .kitten-card:hover {
   box-shadow: 0 0 1rem $primary;
-  width: 102%;
-  height: 102%;
   }
 
 .icon-group {
@@ -64,7 +96,6 @@
   border-radius: 50%;
   color: $light;
   text-align: center;
-  //width: fit-content;
   }
 
 .kitten-pawsed-info {

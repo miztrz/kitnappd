@@ -1,15 +1,7 @@
 <div class="kitten-card">
 	<a href="<%= url_for(kitten_path(kitten)) %>">
 		<div class="kitten-card-img" style="background-image: url(<%= card_image_url(kitten) %>)">
-			<% if user_signed_in? && kitten.user_id == current_user.id %>
-				<div class="icon-group text-center justify-content-between">
-					<div class="icon">
-						<%= app_icon "https://img.icons8.com/plasticine/25/000000/pencil.png", edit_kitten_path(kitten) %>
-					</div>
-					<div class="icon">
-						<%= link_to image_tag('https://img.icons8.com/plasticine/25/000000/filled-trash.png'), kitten, class: "btn", role: "button", method: :delete, data: {confirm: 'Are you sure?'} %>
-					</div>
-				</div>
+
 				<% if kitten.active == false %>
 					<div class="kitten-pawsed">
 						<div class="kitten-pawsed-flag">
@@ -20,7 +12,6 @@
 						</div>
 					</div>
 				<% end %>
-			<% end %>
 		</div>
 
 		<div class="card-body">
@@ -32,10 +23,6 @@
 			</div>
 			<div class="kitten-price">
 				<table>
-					<tr>
-						<th>Hourly</th>
-						<td><%= number_to_currency(kitten.hourly_rate) %></td>
-					</tr>
 					<tr>
 						<th>Daily</th>
 						<td><%= number_to_currency(kitten.daily_rate) %></td>

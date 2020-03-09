@@ -4,8 +4,8 @@
 	<%= current_user.name %>
 </section>
 
-<section class="kitten-cards">
+<section class="kitten-cards" id="dashboard">
 	<% @kittens.each do |kitten| %>
-		<%= render 'card', kitten: kitten %>
+		<%= render 'cards', kitten: kitten %>
 	<% end %>
 </section>

@@ -36,7 +36,8 @@ class BookingsController < ApplicationController
         format.html { redirect_to kitten_path(@kitten), notice: 'Booking request was successfully created.' }
         format.json { render :show, status: :created, location: @kitten }
       else
-        format.html { render :new }
+        format.html { redirect_to kitten_path(@kitten), notice: 'Error when processing Booking request. Please try again.' }
+        format.json { render :show, status: :unprocessable_entity, location: @kitten }
       end
     end
   end

@@ -1,24 +1,15 @@
-<p id="notice"><%= notice %></p>
+<% @page_title = @kitten.name %>
+
+<% if user_signed_in? && @kitten.user_id == current_user.id %>
+	<%= link_to 'Edit', edit_kitten_path(@kitten), class:"btn btn-primary btn-block" %>
+<% end %>
+
 
 <p>
 	<strong>Owner:</strong>
 	<%= @kitten.user.name %>
 </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @kitten.name %>
-</p>
-
-<div class="kitten-imgs">
-<% if @kitten.images.attached? %>
-	<% @kitten.images.each do |img| %>
-		<%= image_tag img, class: "kitten-img" %>
-	<% end %>
-<% else %>
-	<%= image_tag placekitten, class: "kitten-img" %>
-<% end %>
-</div>
 
 <p>
   <strong>Breed:</strong>
@@ -31,23 +22,14 @@
 </p>
 
 <p>
-  <strong>Hourly rate:</strong>
-  <%= @kitten.hourly_rate %>
-</p>
-
-<p>
   <strong>Daily rate:</strong>
-  <%= @kitten.daily_rate %>
+  <%= number_to_currency(@kitten.daily_rate) %>
 </p>
 
-<% if user_signed_in? && @kitten.user_id == current_user.id %>
- <%= link_to 'Edit', edit_kitten_path(@kitten) %> |
-<% end %>
-<%= link_to 'Back', kittens_path %>
-<% if !(user_signed_in? && @kitten.user_id == current_user.id) %>
-| <%=  link_to 'Request Booking', new_booking_path(@kitten)  %>
-<%  end %>
-
-<h1>Bookings</h1>
+<%= render 'imagegallery' %>
+<%= link_to 'Back', _back_url, class:"btn btn-primary btn-block" %>
+<h2>Bookings</h2>
 <%= render @kitten.bookings %>
+<% unless user_signed_in? && @kitten.user_id == current_user.id %>
 <%= render 'bookings/form' %>
+<% end %>

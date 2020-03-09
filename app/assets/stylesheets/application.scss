@@ -36,3 +36,15 @@ h2, h4, h6 {
 p, em, strong {
   font-size: small;
   }
+
+// Login & user creation screens
+
+.user-screens {
+  max-width: 400px;
+  }
+
+// Page title (variable set ny each view to show the page title before all page views)
+
+.app-page-title {
+  padding-bottom: 1rem;
+  }

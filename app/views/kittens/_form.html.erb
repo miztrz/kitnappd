@@ -2,9 +2,7 @@
 	
 	<% if kitten.errors.any? %>
 		<div id="error_explanation" class="alert alert-warning alert-dismissible fade show" role="alert" >
-			
 			<h5><%= pluralize(kitten.errors.count, "error") %> prohibited this kitten from being saved:</h5>
-			
 			<ul>
 				<% kitten.errors.full_messages.each do |message| %>
 					<li class="list-unstyled"><%= message %></li>
@@ -18,49 +16,27 @@
 
   <div class="form-group row">
     <%= form.label :name, class: "col-sm-2 col-form-label"  %>
-    <%= form.text_field :name %>
-  </div>
-	
-	<% if kitten.images.attached? %>
-		<% kitten.images.each do |img| %>
-			<%= image_tag img %>
-		<% end %>
-	<% end %>
-	
-	<div class="form-group row">
-		<%= form.label :images, class: "col-sm-2 col-form-label"  %>
-		<%= form.file_field :images, multiple: true %>
-	</div>
-
-  <div class="form-group row">
+    <%= form.text_field :name, class: "form-control col-sm-4" %>
     <%= form.label :breed, class: "col-sm-2 col-form-label"  %>
-    <%= form.text_field :breed %>
+    <%= form.text_field :breed, class: "form-control col-sm-4" %>
   </div>
 
   <div class="form-group row">
     <%= form.label :description, class: "col-sm-2 col-form-label"  %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="form-group row">
-    <%= form.label :hourly_rate, class: "col-sm-2 col-form-label"  %>
-    <%= form.text_field :hourly_rate %>
+    <%= form.text_area :description, class: "form-control col-sm-10" %>
   </div>
 
   <div class="form-group row">
     <%= form.label :daily_rate, class: "col-sm-2 col-form-label" %>
-    <%= form.text_field :daily_rate %>
-  </div>
-
-  <div class="form-group row">
-    <%= form.label :active %>
-    <%= form.check_box :active %>
-  </div>
+    <%= form.text_field :daily_rate, class: "form-control col-sm-4", pattern:"^\$\d{1,3}(,\d{3})*(\.\d+)?$" %>
+		<%= form.label :images, class: "col-sm-2 col-form-label"  %>
+		<%= form.file_field :images, multiple: true, class: "col-sm-4 col-form-label" %>
+	</div>
 	
-
-
+	<%= render 'imagegallery' %>
+	
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-primary btn-block" %>
   </div>
 	
 
