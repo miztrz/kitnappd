@@ -1,6 +1,8 @@
-@import 'kittens';
-@import 'bookings';
-@import 'page';
+@import 'sass/kittens';
+@import 'sass/kitten-cards';
+@import 'sass/dashboard';
+@import 'sass/bookings';
+@import 'sass/page';
 
 @import 'theme/variables_light';
 @import 'bootstrap';
@@ -29,12 +31,21 @@ h5, h6 {
   font-size: large;
   }
 
+h1 {
+  background-color: $secondary;
+  color: $light;
+  }
+
 h2, h4, h6 {
   font-weight: lighter;
   }
 
 p, em, strong {
   font-size: small;
+  }
+
+.btn {
+  margin: 1vw;
   }
 
 // Login & user creation screens

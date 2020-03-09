@@ -1,6 +1,6 @@
-@import 'theme/variables_light';
+@import '../theme/variables_light';
 
-// Kitten show page.
+// Code below relates to the kitten cards on kitten index page & user dashboard
 
 // Use Bootstrap breakpoints for consistency.
 $bootstrap-sm: 576px;
@@ -8,42 +8,14 @@ $bootstrap-md: 768px;
 $bootstrap-lg: 992px;
 $bootstrap-xl: 1200px;
 
-// Crop thumbnail images.
-#gallery {
-  img {
-	height: 75vw;
-	object-fit: cover;
-	
-	@media (min-width: $bootstrap-sm) {
-	  height: 35vw;
-	  }
-	
-	@media (min-width: $bootstrap-lg) {
-	  height: 18vw;
-	  }
-	}
-  }
-
-  // Crop images in the carousel
-.carousel-item {
-  img {
-	height: 60vw;
-	object-fit: cover;
-	
-	@media (min-width: $bootstrap-sm) {
-	  height: 350px;
-	  }
-	}
-  }
-
-// Code below relates to the kitten cards on kitten index page & user dashboard
-
 .kitten-cards {
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   margin: 0 auto 0 auto;
-  
+  }
+
+#index {
   @media (min-width: $bootstrap-md) {
 	width: 80vw;
 	}
@@ -51,11 +23,6 @@ $bootstrap-xl: 1200px;
   @media (min-width: $bootstrap-lg) {
 	width: 75vw;
 	}
-  
-  }
-
-#dashboard {
-  max-width: $bootstrap-sm;
   }
 
 .kitten-card {
@@ -72,16 +39,6 @@ $bootstrap-xl: 1200px;
 
 .kitten-card:hover {
   box-shadow: 0 0 1rem $primary;
-  }
-
-.icon-group {
-  display: inline-block;
-  float: right;
-  }
-
-.icon {
-  background: radial-gradient(circle, $primary 0%, rgba(0,0,0,0) 40%);
-  border-radius: 50%;
   }
 
 .kitten-pawsed {
@@ -135,10 +92,10 @@ $bootstrap-xl: 1200px;
   border-radius: .2rem;
   border-bottom-width: 1px;
   padding-bottom: .5rem;
-
+	
   }
 
-.kitten-price {
+.kitten-business {
   display: flex;
   justify-content: space-evenly;
   table {
@@ -167,4 +124,3 @@ $bootstrap-xl: 1200px;
   margin: -10px auto 0 auto;
   text-align: center;
   }
-

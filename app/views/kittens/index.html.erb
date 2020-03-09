@@ -1,5 +1,7 @@
-<section class="kitten-cards">
+<section class="kitten-cards" id="index">
 	<% @kittens.each do |kitten| %>
-		<%= render 'cards', kitten: kitten %>
+		<% if user_signed_in? && kitten.user_id != current_user.id %>
+			<%= render 'cards', kitten: kitten %>
+		<% end %>
 	<% end %>
 </section>

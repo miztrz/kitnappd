@@ -1,7 +1,6 @@
 <div class="kitten-card">
 	<a href="<%= url_for(kitten_path(kitten)) %>">
 		<div class="kitten-card-img" style="background-image: url(<%= card_image_url(kitten) %>)">
-
 				<% if kitten.active == false %>
 					<div class="kitten-pawsed">
 						<div class="kitten-pawsed-flag">
@@ -21,14 +20,30 @@
 			<div class="kitten-breed">
 				<h5><%= kitten.breed %></h5>
 			</div>
-			<div class="kitten-price">
+			<div class="kitten-business">
 				<table>
 					<tr>
 						<th>Daily</th>
 						<td><%= number_to_currency(kitten.daily_rate) %></td>
 					</tr>
+					<% if user_signed_in? && current_user.id == kitten.user_id && Booking.where(kitten_id: kitten.id).count > 0 %>
+					<tr>
+						<th>Bookings</th>
+						<td><%= Booking.where(kitten_id: kitten.id).count %> requests</td>
+					</tr>
+					<% end %>
+					<% if user_signed_in? && current_user.id != kitten.user_id %>
+						<% if Booking.where(user_id: current_user.id).where(kitten_id: kitten.id).count > 0 %>
+						<tr>
+							<th>Requests</th>
+							<td><%= Booking.where(user_id: current_user.id).where(kitten_id: kitten.id).count %> play dates</td>
+						</tr>
+							<% end %>
+					<% end %>
 				</table>
 			</div>
+
+
 		</div>
 	</a>
 </div>
