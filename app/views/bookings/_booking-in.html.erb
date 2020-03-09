@@ -1,0 +1,18 @@
+<% if @kittens.joins(:bookings).where(bookings: { kitten_id: @kittens.ids} ).exists? %>
+	<div class="booking-in-cards">
+		<% @kittens.joins(:bookings).where(bookings: { kitten_id: @kittens.ids} ).each do |kitten| %>
+			<div class="booking-in-card card border-primary mb-3">
+				<a href="<%= url_for(kitten_path(kitten)) %>">
+					<div class="booking-in-card-img" style="background-image: url(<%= card_image_url(kitten) %>)">
+					</div>
+						<div class="card-header">
+							<h4><%= kitten.name %></h4>
+						</div>
+						<div class="card-body">
+							<h5><%= kitten.breed %></h5>
+						</div>
+				</a>
+			</div>
+		<% end %>
+	</div>
+<% end %>

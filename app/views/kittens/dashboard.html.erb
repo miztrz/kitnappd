@@ -20,10 +20,8 @@
 			<% Booking.where(user_id: current_user.id).each do |booking| %>
 			<%= render 'bookings/booking', booking: booking %>
 			<% end %>
-<!--			<h3>Requested kitties</h3>-->
-			<%# @kittens.join(:bookings).where(user_id: current_user.id).each do |kitten| %>
-				<%#= render 'cards', kitten: kitten %>
-			<%# end %>
+			<h3>Booking requests</h3>
+			<%= render 'bookings/booking-in', kitten: @kittens %>
 		</section>
 	</div>
 <section class="dash-kitten-cards">
