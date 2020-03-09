@@ -1,18 +1,31 @@
-<div class="dash-grid">
-<section class="dash-profile-details">
-	<h2>Profile</h2>
-	<div class="form-group row">
-		<strong class="col-sm-2">Name:</strong>
-		<p class="col-sm-10"><%= current_user.name %></p>
-		<strong class="col-sm-2">Email:</strong>
-		<p class="col-sm-10"><%= current_user.email %></p>
+<div class="dash-wrap">
+	<div class="dash-left">
+		<section class="dash-profile-details">
+			<h2>Profile</h2>
+			<div class="form-group row">
+				<strong class="col-sm-2">Name:</strong>
+				<p class="col-sm-10"><%= current_user.name %></p>
+				<strong class="col-sm-2">Email:</strong>
+				<p class="col-sm-10"><%= current_user.email %></p>
+			</div>
+			<div class="form-group row d-flex justify-content-between">
+				<%= link_to "Edit details", edit_user_registration_path(current_user), class: "col-md-10 btn btn-primary btn-block" %>
+				<%= link_to "Change password", edit_user_password_path(current_user), class: "col-md-10 btn btn-primary btn-block" %>
+			</div>
+		</section>
+		<section class="dash-bookings">
+			<h2>Play dates</h2>
+<!--			TODO - Fix the code to show incoming booking requests-->
+			<h3>Requested play dates</h3>
+			<% Booking.where(user_id: current_user.id).each do |booking| %>
+			<%= render 'bookings/booking', booking: booking %>
+			<% end %>
+<!--			<h3>Requested kitties</h3>-->
+			<%# @kittens.join(:bookings).where(user_id: current_user.id).each do |kitten| %>
+				<%#= render 'cards', kitten: kitten %>
+			<%# end %>
+		</section>
 	</div>
-	<div class="form-group row d-flex justify-content-between">
-		<%= link_to "Edit details", edit_user_registration_path(current_user), class: "col-md-10 btn btn-primary btn-block" %>
-		<%= link_to "Change password", edit_user_password_path(current_user), class: "col-md-10 btn btn-primary btn-block" %>
-	</div>
-</section>
-
 <section class="dash-kitten-cards">
 	<h2>Your Kittens</h2>
 	<div class="form-group row d-flex justify-content-between">
@@ -25,10 +38,7 @@
 	</div>
 </section>
 	
-	<section class="dash-new-kitten">
 
-		
-	</section>
 
 
 </div>
