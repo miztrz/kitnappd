@@ -1,0 +1,19 @@
+<% if @bookings_out.exists? %>
+	<div class="booking-cards">
+		<% @bookings_out.each do |booking| %>
+			<div class="card text-white bg-primary mb-3 booking-card">
+				<a href="<%= url_for(kitten_path(booking.kitten.id)) %>">
+					<div class="card-header d-flex justify-content-between">
+						<h4><%= booking.kitten.name %></h4>
+						<h4><%= number_to_currency(booking.total) %></h4>
+					</div>
+					<div class="card-body">
+						<h5><%= booking.user.name %></h5>
+					</div>
+				</a>
+			</div>
+		<% end %>
+	</div>
+<% else %>
+	<h6>You haven't requested any play dates yet! Please see available kittens <%= link_to 'here', kittens_path %>.</h6>
+<% end %>

@@ -1,12 +1,6 @@
-@import '../theme/variables_light';
+@import '../variables';
 
 // Code below relates to the kitten cards on kitten index page & user dashboard
-
-// Use Bootstrap breakpoints for consistency.
-$bootstrap-sm: 576px;
-$bootstrap-md: 768px;
-$bootstrap-lg: 992px;
-$bootstrap-xl: 1200px;
 
 .kitten-cards {
   display: grid;

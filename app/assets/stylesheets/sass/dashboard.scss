@@ -1,10 +1,6 @@
-// Relates to the dashboard view
+@import '../variables';
 
-// Use Bootstrap breakpoints for consistency.
-$bootstrap-sm: 576px;
-$bootstrap-md: 768px;
-$bootstrap-lg: 992px;
-$bootstrap-xl: 1200px;
+// Relates to the dashboard view
 
 .dash-wrap {
 	display: grid;
