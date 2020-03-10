@@ -1,19 +1,51 @@
 <% if @bookings_in.exists? %>
 	<div class="booking-cards">
 		<% @bookings_in.each do |booking| %>
-			<div class="card text-white bg-primary mb-3 booking-card">
+			<div class="card border-primary mb-3 booking-card">
 				<a href="<%= url_for(kitten_path(booking.kitten.id)) %>">
-						<div class="card-header d-flex justify-content-between">
-							<h4><%= booking.kitten.name %></h4>
-							<h4><%= number_to_currency(booking.total) %></h4>
+					<div class="card-header d-flex justify-content-between">
+						<h3><%= booking.kitten.name %></h3>
+						<h4><%= number_to_currency(booking.total) %></h4>
+					</div>
+					<div class="card-body">
+						<div class="card-text d-flex justify-content-between text-white">
+							<p>Requested By</p>
+							<p><%= booking.user.name %></p>
 						</div>
-						<div class="card-body">
-							<h5><%= booking.user.name %></h5>
+						<div class="card-text d-flex justify-content-between text-white">
+							<p>Length of Booking</p>
+							<p><%= booking.title %></p>
 						</div>
+						<div class="card-text d-flex justify-content-between text-white">
+							<p>Start Date</p>
+							<p><%= booking.start_time.strftime("%A %e %b %Y") %></p>
+						</div>
+						<div class="card-text d-flex justify-content-between text-white">
+							<p>End Date</p>
+							<p><%= booking.end_time.strftime("%A %e %b %Y") %></p>
+						</div>
+						<div class="card-text text-center">
+							<% if status(booking) == "accepted-pending" %>
+								<h5>Scheduled:</h5>
+								<h5><%= booking.start_time.strftime("%A %e %b %Y") %>.</h5>
+							<% elsif status(booking) == "accepted-pastdate" %>
+								<h5>Completed.</h5>
+							<% elsif status(booking) == "notaccepted-pending" %>
+								<h5>Please respond to booking.</h5>
+								<%= link_to 'Accept Booking', kitten_path(booking.kitten.id), class:"btn btn-primary btn-block" %>
+								<%= link_to 'Reject Booking', kitten_path(booking.kitten.id), class:"btn btn-primary btn-block" %>
+							<% elsif status(booking) == "notaccepted-pastdate" %>
+								<h5>You did not respond in time.</h5>
+							<% else %>
+								<h5>Unknown issue. Please log a ticket.</h5>
+							<% end %>
+						</div>
+						
+					</div>
 				</a>
 			</div>
 		<% end %>
 	</div>
-	<% else %>
-	<h6>There are no current bookings for your kittens.</h6>
+<% else %>
+	<h6>There are no booking requests for you yet.</h6>
 <% end %>

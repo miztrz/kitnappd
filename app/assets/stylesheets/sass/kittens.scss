@@ -1,19 +1,22 @@
-@import '../variables';
+@import '../theme/variables';
 
 // Kitten show page.
 
 // Crop thumbnail images.
 #gallery {
   img {
-	height: 75vw;
+	max-height: 35vw;
+	max-width: 35vw;
 	object-fit: cover;
 	
 	@media (min-width: $bootstrap-sm) {
-	  height: 35vw;
+	  max-height: 18vw;
+	  max-width: 18vw;
 	  }
 	
 	@media (min-width: $bootstrap-lg) {
-	  height: 18vw;
+	  max-height: 8vw;
+	  max-width: 8vw;
 	  }
 	}
   }

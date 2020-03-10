@@ -1,12 +1,9 @@
-@import 'sass/kittens';
-@import 'sass/kitten-cards';
-@import 'sass/dashboard';
-@import 'sass/bookings';
-@import 'sass/page';
+@import 'sass/*';
 
-@import 'variables';
+@import 'theme/variables';
 @import 'bootstrap';
-@import 'bootswatch';
+@import 'theme/bootswatch';
+
 
 body {
   max-height: 100vh;

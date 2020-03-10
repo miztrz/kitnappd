@@ -1,4 +1,4 @@
-@import '../variables';
+@import '../theme/variables';
 
 // Booking in
 
@@ -11,21 +11,11 @@
 
 .booking-card {
   place-self: center stretch;
-  box-shadow: 0 0 .5rem $secondary;
-  border-color: $primary;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: .5rem;
   a:hover {
 	text-decoration: none;
-	color: $light;
-	};
+	}
   }
 
 .booking-card > * {
-  color: $light;
-  }
-
-.booking-card:hover {
-  box-shadow: 0 0 1rem $primary;
+  line-height: 1;
   }
