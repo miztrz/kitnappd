@@ -1,13 +1,7 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  before_action :set_booking, except: [:index, :new, :create]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :check_user, only: [:edit, :update, :destroy]
-
-  # def index
-  #   @kittens = Kitten.where(user_id: current_user.id).order(active: :desc)
-  #   @bookings_in = Booking.joins(:kitten).where(bookings: { kitten_id: @kittens.ids} )
-  #   @bookings_out = Booking.where(user_id: current_user.id)
-  # end
 
   def show
   end
@@ -17,6 +11,7 @@ class BookingsController < ApplicationController
   end
 
   def edit
+
   end
 
   def create
@@ -54,12 +49,33 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    @kitten = Kitten.find(params[:kitten_id])
     @booking.destroy
     respond_to do |format|
       format.html { redirect_to kitten_path(@kitten), notice: 'Booking was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def accept
+    @kitten = Kitten.find(params[:kitten_id])
+    @booking.accepted = true
+    respond_to do |format|
+      if @booking.update(booking_params)
+        format.html { redirect_to kitten_path(@kitten), notice: 'Booking was successfully accepted.' }
+        format.json { render :show, status: :ok, location: @booking }
+      else
+        format.html { redirect_to kitten_path(@kitten), notice: 'Error when processing Booking acceptance. Please try again.' }
+        format.json { render :show, status: :unprocessable_entity, location: @kitten }
+      end
+    end
+  end
+
+  def reject
+
+  end
+
+  def paid
+
   end
 
   private
@@ -69,7 +85,7 @@ class BookingsController < ApplicationController
     end
 
     def booking_params
-      params.require(:booking).permit(:kitten_id, :user_id, :title, :start_time, :end_time, :accepted, :total)
+      params.require(:booking).permit(:kitten_id, :user_id, :title, :start_time, :end_time, :accepted, :total, :rejected, :paid)
     end
 
   def check_user

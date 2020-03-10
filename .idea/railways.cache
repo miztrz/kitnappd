@@ -1,20 +1,4 @@
                                Prefix Verb   URI Pattern                                                                              Controller#Action
-                              kittens GET    /kittens(.:format)                                                                       kittens#index
-                                      POST   /kittens(.:format)                                                                       kittens#create
-                           new_kitten GET    /kittens/new(.:format)                                                                   kittens#new
-                          edit_kitten GET    /kittens/:id/edit(.:format)                                                              kittens#edit
-                               kitten GET    /kittens/:id(.:format)                                                                   kittens#show
-                                      PATCH  /kittens/:id(.:format)                                                                   kittens#update
-                                      PUT    /kittens/:id(.:format)                                                                   kittens#update
-                                      DELETE /kittens/:id(.:format)                                                                   kittens#destroy
-                             bookings GET    /bookings(.:format)                                                                      bookings#index
-                                      POST   /bookings(.:format)                                                                      bookings#create
-                          new_booking GET    /bookings/new(.:format)                                                                  bookings#new
-                         edit_booking GET    /bookings/:id/edit(.:format)                                                             bookings#edit
-                              booking GET    /bookings/:id(.:format)                                                                  bookings#show
-                                      PATCH  /bookings/:id(.:format)                                                                  bookings#update
-                                      PUT    /bookings/:id(.:format)                                                                  bookings#update
-                                      DELETE /bookings/:id(.:format)                                                                  bookings#destroy
                      new_user_session GET    /users/sign_in(.:format)                                                                 devise/sessions#new
                          user_session POST   /users/sign_in(.:format)                                                                 devise/sessions#create
                  destroy_user_session DELETE /users/sign_out(.:format)                                                                devise/sessions#destroy
@@ -30,6 +14,9 @@
                                       PUT    /users(.:format)                                                                         devise/registrations#update
                                       DELETE /users(.:format)                                                                         devise/registrations#destroy
                                       POST   /users(.:format)                                                                         devise/registrations#create
+                kitten_booking_accept PUT    /kittens/:kitten_id/bookings/:booking_id/accept(.:format)                                bookings#accept
+                kitten_booking_reject PUT    /kittens/:kitten_id/bookings/:booking_id/reject(.:format)                                bookings#reject
+                  kitten_booking_paid PUT    /kittens/:kitten_id/bookings/:booking_id/paid(.:format)                                  bookings#paid
                       kitten_bookings GET    /kittens/:kitten_id/bookings(.:format)                                                   bookings#index
                                       POST   /kittens/:kitten_id/bookings(.:format)                                                   bookings#create
                    new_kitten_booking GET    /kittens/:kitten_id/bookings/new(.:format)                                               bookings#new
@@ -38,17 +25,17 @@
                                       PATCH  /kittens/:kitten_id/bookings/:id(.:format)                                               bookings#update
                                       PUT    /kittens/:kitten_id/bookings/:id(.:format)                                               bookings#update
                                       DELETE /kittens/:kitten_id/bookings/:id(.:format)                                               bookings#destroy
-                                      GET    /kittens(.:format)                                                                       kittens#index
+                              kittens GET    /kittens(.:format)                                                                       kittens#index
                                       POST   /kittens(.:format)                                                                       kittens#create
-                                      GET    /kittens/new(.:format)                                                                   kittens#new
-                                      GET    /kittens/:id/edit(.:format)                                                              kittens#edit
-                                      GET    /kittens/:id(.:format)                                                                   kittens#show
+                           new_kitten GET    /kittens/new(.:format)                                                                   kittens#new
+                          edit_kitten GET    /kittens/:id/edit(.:format)                                                              kittens#edit
+                               kitten GET    /kittens/:id(.:format)                                                                   kittens#show
                                       PATCH  /kittens/:id(.:format)                                                                   kittens#update
                                       PUT    /kittens/:id(.:format)                                                                   kittens#update
                                       DELETE /kittens/:id(.:format)                                                                   kittens#destroy
                             page_home GET    /page/home(.:format)                                                                     page#home
                            page_about GET    /page/about(.:format)                                                                    page#about
-                            dashboard GET    /dashboard(.:format)                                                                     kittens#dashboard
+                       page_dashboard GET    /page/dashboard(.:format)                                                                page#dashboard
                                  root GET    /                                                                                        page#home
         rails_mandrill_inbound_emails POST   /rails/action_mailbox/mandrill/inbound_emails(.:format)                                  action_mailbox/ingresses/mandrill/inbound_emails#create
         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create

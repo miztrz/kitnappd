@@ -33,7 +33,7 @@
 							<% elsif status(booking) == "notaccepted-pending" %>
 								<h5>Please respond to booking.</h5>
 								<div class="container justify-items-center">
-									<%= link_to 'Accept Booking', kitten_path(booking.kitten.id), class:"btn btn-primary btn-block" %>
+									<%= link_to 'Accept Booking', kitten_booking_accept_path(booking.id), class:"btn btn-primary btn-block" %>
 									<%= link_to 'Reject Booking', kitten_path(booking.kitten.id), class:"btn btn-primary btn-block" %>
 								</div>
 							<% elsif status(booking) == "notaccepted-pastdate" %>
