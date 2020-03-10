@@ -4,9 +4,9 @@
 @import 'sass/bookings';
 @import 'sass/page';
 
-@import 'theme/variables_light';
+@import 'variables';
 @import 'bootstrap';
-@import 'theme/bootswatch_light';
+//@import 'bootswatch';
 
 body {
   max-height: 100vh;
@@ -31,13 +31,12 @@ h5, h6 {
   font-size: large;
   }
 
-h1 {
-  background-color: $secondary;
-  color: $light;
-  }
-
 h2, h4, h6 {
   font-weight: lighter;
+  }
+
+h2 {
+  border-bottom: 1px solid;
   }
 
 p, em, strong {

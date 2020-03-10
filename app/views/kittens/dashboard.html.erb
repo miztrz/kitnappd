@@ -3,10 +3,10 @@
 		<section class="dash-profile-details">
 			<h2>Profile</h2>
 			<div class="form-group row">
-				<strong class="col-sm-2">Name:</strong>
-				<p class="col-sm-10"><%= current_user.name %></p>
-				<strong class="col-sm-2">Email:</strong>
-				<p class="col-sm-10"><%= current_user.email %></p>
+				<h5 class="col-sm-2">Name:</h5>
+				<h6 class="col-sm-10"><%= current_user.name %></h6>
+				<h5 class="col-sm-2">Email:</h5>
+				<h6 class="col-sm-10"><%= current_user.email %></h6>
 			</div>
 			<div class="form-group row d-flex justify-content-between">
 				<%= link_to "Edit details", edit_user_registration_path(current_user), class: "col-md-10 btn btn-primary btn-block" %>
@@ -16,12 +16,10 @@
 		<section class="dash-bookings">
 			<h2>Play dates</h2>
 <!--			TODO - Fix the code to show incoming booking requests-->
-			<h3>Requested play dates</h3>
-			<% Booking.where(user_id: current_user.id).each do |booking| %>
-			<%= render 'bookings/booking', booking: booking %>
-			<% end %>
-			<h3>Booking requests</h3>
-			<%= render 'bookings/booking-in', kitten: @kittens %>
+			<h5>Requested play dates</h5>
+			<%= render 'bookings/booking-out', bookings_out: @bookings_out %>
+			<h5>Booking requests</h5>
+			<%= render 'bookings/booking-in', bookings_in: @bookings_in %>
 		</section>
 	</div>
 <section class="dash-kitten-cards">
@@ -30,13 +28,12 @@
 		<%= link_to "New kitten", new_kitten_path, class: "btn btn-primary btn-block" %>
 	</div>
 	<div class="kitten-cards">
-	<% @kittens.each do |kitten| %>
+		<% @kittens.each do |kitten| %>
 		<%= render 'cards', kitten: kitten %>
 	<% end %>
+		<% if !@kittens.any? %>
+		<h6>You don't have any kittens yet. Please add a new one to your roster <%= link_to 'here', new_kitten_path %>.</h6>
+			<% end %>
 	</div>
 </section>
-	
-
-
-
 </div>

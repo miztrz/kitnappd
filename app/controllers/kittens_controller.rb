@@ -3,10 +3,6 @@ class KittensController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :check_user, only: [:edit, :update, :destroy]
 
-  def dashboard
-    @kittens = Kitten.where(user_id: current_user.id).order(active: :desc)
-  end
-
   def index
     @kittens = Kitten.where(active: true).order(:id)
   end
@@ -55,6 +51,12 @@ class KittensController < ApplicationController
       format.html { redirect_to kittens_url, notice: 'Kitten was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def dashboard
+    @kittens = Kitten.where(user_id: current_user.id).order(active: :desc)
+    @bookings_in = Booking.joins(:kitten).where(bookings: { kitten_id: @kittens.ids} )
+    @bookings_out = Booking.where(user_id: current_user.id)
   end
 
   private
