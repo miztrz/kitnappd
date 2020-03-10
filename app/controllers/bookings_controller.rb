@@ -3,28 +3,22 @@ class BookingsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :check_user, only: [:edit, :update, :destroy]
 
-  # GET /bookings
-  # GET /bookings.json
-  def index
-    @bookings = Booking.all
-  end
+  # def index
+  #   @kittens = Kitten.where(user_id: current_user.id).order(active: :desc)
+  #   @bookings_in = Booking.joins(:kitten).where(bookings: { kitten_id: @kittens.ids} )
+  #   @bookings_out = Booking.where(user_id: current_user.id)
+  # end
 
-  # GET /bookings/1
-  # GET /bookings/1.json
   def show
   end
 
-  # GET /bookings/new
   def new
     @booking = Booking.new
   end
 
-  # GET /bookings/1/edit
   def edit
   end
 
-  # POST /bookings
-  # POST /bookings.json
   def create
     @kitten = Kitten.find(params[:kitten_id])
     @booking = @kitten.bookings.build(booking_params)
@@ -42,37 +36,38 @@ class BookingsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /bookings/1
-  # PATCH/PUT /bookings/1.json
   def update
+    @kitten = Kitten.find(params[:kitten_id])
+    @booking = @kitten.bookings.build(booking_params)
+    @booking.user_id = current_user.id
+    @booking.title = TimeDifference.between(@booking.start_time, @booking.end_time).humanize
+    @booking.total = booking_charge
     respond_to do |format|
       if @booking.update(booking_params)
-        format.html { redirect_to @booking, notice: 'Booking was successfully updated.' }
+        format.html { redirect_to kitten_path(@kitten), notice: 'Booking was successfully updated.' }
         format.json { render :show, status: :ok, location: @booking }
       else
-        format.html { render :edit }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
+        format.html { redirect_to kitten_path(@kitten), notice: 'Error when processing Booking change request. Please try again.' }
+        format.json { render :show, status: :unprocessable_entity, location: @kitten }
       end
     end
   end
 
-  # DELETE /bookings/1
-  # DELETE /bookings/1.json
   def destroy
+    @kitten = Kitten.find(params[:kitten_id])
     @booking.destroy
     respond_to do |format|
-      format.html { redirect_to bookings_url, notice: 'Booking was successfully destroyed.' }
+      format.html { redirect_to kitten_path(@kitten), notice: 'Booking was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_booking
       @booking = Booking.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def booking_params
       params.require(:booking).permit(:kitten_id, :user_id, :title, :start_time, :end_time, :accepted, :total)
     end
@@ -84,12 +79,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_charge
-    hours = TimeDifference.between(@booking.start_time, @booking.end_time).in_hours.ceil
-    days = TimeDifference.between(@booking.start_time, @booking.end_time).in_days.ceil
-    if hours < 10
-      hours * @booking.kitten.hourly_rate
-    else
-      days * @booking.kitten.daily_rate
-    end
+    TimeDifference.between(@booking.start_time, @booking.end_time).in_days.ceil * @booking.kitten.daily_rate
   end
+
 end

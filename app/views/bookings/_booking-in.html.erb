@@ -32,8 +32,10 @@
 								<h5>Completed.</h5>
 							<% elsif status(booking) == "notaccepted-pending" %>
 								<h5>Please respond to booking.</h5>
-								<%= link_to 'Accept Booking', kitten_path(booking.kitten.id), class:"btn btn-primary btn-block" %>
-								<%= link_to 'Reject Booking', kitten_path(booking.kitten.id), class:"btn btn-primary btn-block" %>
+								<div class="container justify-items-center">
+									<%= link_to 'Accept Booking', kitten_path(booking.kitten.id), class:"btn btn-primary btn-block" %>
+									<%= link_to 'Reject Booking', kitten_path(booking.kitten.id), class:"btn btn-primary btn-block" %>
+								</div>
 							<% elsif status(booking) == "notaccepted-pastdate" %>
 								<h5>You did not respond in time.</h5>
 							<% else %>

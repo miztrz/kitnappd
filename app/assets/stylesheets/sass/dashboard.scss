@@ -7,25 +7,15 @@
   grid-template-columns: 1fr;
   margin: 0 auto 0 auto;
   @media all and (min-width: $bootstrap-md) {
-	grid-template-columns: [left] 1fr [main] 2fr;
+	grid-template-columns: [left] 1fr [main] 3fr;
 	}
   }
 
 .dash-left {
   grid-column: left;
-  padding: 1vw;
-  
-  }
-.dash-profile-details {
-
-  }
-
-.dash-bookings {
-
-  }
-
+    }
 .dash-kitten-cards {
-  padding: 1vw;
+	margin-left: 3vw;
 	grid-column: main;
   }
 

@@ -28,12 +28,16 @@
 							<% if status(booking) == "accepted-pending" %>
 								<h5>Scheduled:</h5>
 									<h5><%= booking.start_time.strftime("%A %e %b %Y") %>.</h5>
+								<div class="container justify-items-center">
 								<%= link_to 'Edit Booking', kitten_path(booking.kitten.id), class:"btn btn-primary btn-block" %>
+								</div>
 							<% elsif status(booking) == "accepted-pastdate" %>
-								<h5>We hope you enjoyed your kitten date.</h5>
+								<h5>Completed.</h5>
 							<% elsif status(booking) == "notaccepted-pending" %>
 								<h5>Pending response from kitten owner.</h5>
+								<div class="container justify-items-center">
 								<%= link_to 'Edit Booking', kitten_path(booking.kitten.id), class:"btn btn-primary btn-block" %>
+								</div>
 							<% elsif status(booking) == "notaccepted-pastdate" %>
 								<h5>Kitten owner did not respond. Please try again.</h5>
 							<% else %>

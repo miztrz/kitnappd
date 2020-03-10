@@ -1,25 +1,23 @@
-<!--TODO Add user nav to navbar-->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary" role="navigation">
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 	<%= link_to 'kitnappd', root_path, class: "navbar-brand" %>
-<!--		<a class="navbar-brand" href=>kitnappd</a>-->
 		<div class="collapse navbar-collapse" id="navbarToggler">
 			<ul class="navbar-nav">
 				<li class="dropdown-divider"></li>
 				<li class="nav-item">
 					<%= link_to 'Kittens Available', kittens_path, class: "nav-link" %>
 				</li>
-<!--				<li class="nav-item">-->
-					<%#= link_to 'Rent Your Kitten', new_kitten_path , class: "nav-link" %>
-<!--				</li>-->
+				<li class="nav-item">
+					<%= link_to 'Add a New Kitten', new_kitten_path , class: "nav-link" %>
+				</li>
 				<li class="dropdown-divider"></li>
 			</ul>
 			<ul class="navbar-nav">
 				<% if user_signed_in? %>
 					<li class="nav-item">
-						<%= link_to 'Dashboard', dashboard_path, class: 'nav-link' %>
+						<%= link_to 'Dashboard', page_dashboard_path, class: 'nav-link' %>
 					</li>
 					<li class="nav-item">
 						<%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link' %>
