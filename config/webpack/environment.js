@@ -1,5 +1,5 @@
-const { environment } = require('@rails/webpacker')
-const webpack = require('webpack')
+const { environment } = require('@rails/webpacker');
+const webpack = require('webpack');
 environment.plugins.prepend(
     'Provide',
     new webpack.ProvidePlugin({
@@ -9,5 +9,5 @@ environment.plugins.prepend(
         Popper: 'popper.js/dist/popper',
         moment: 'moment/moment'
     })
-)
-module.exports = environment
+);
+module.exports = environment;

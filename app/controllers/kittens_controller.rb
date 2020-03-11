@@ -8,6 +8,9 @@ class KittensController < ApplicationController
   end
 
   def show
+    @bookings_in = Booking.where(bookings: { kitten_id: @kitten.id} ).
+                   joins(:kitten).where(kittens: { user_id: current_user.id} )
+    @bookings_out = Booking.where(user_id: current_user.id).where(kitten_id: @kitten.id)
   end
 
   def new

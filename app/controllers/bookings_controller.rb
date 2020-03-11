@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, except: [:index, :new, :create]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_booking, except: [:new, :create]
+  before_action :authenticate_user!, except: [:show]
   before_action :check_user, only: [:edit, :update, :destroy]
 
   def show
@@ -31,7 +31,7 @@ class BookingsController < ApplicationController
   end
 
   def update
-    @booking.length_ = TimeDifference.between(@booking.start_time, @booking.end_time).humanize
+    @booking.length_human = TimeDifference.between(@booking.start_time, @booking.end_time).humanize
     @booking.total = booking_charge
     respond_to do |format|
       if @booking.update(booking_params)

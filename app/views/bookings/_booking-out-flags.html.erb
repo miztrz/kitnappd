@@ -19,8 +19,10 @@
 		<%= link_to 'Delete Booking', kitten_booking_path(id: booking, kitten_id: booking.kitten_id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-primary" %>
 	<% elsif state == "past-none" || state == "past-player" %>
 		<h5>Please confirm your play date was a success.</h5>
-		<%= link_to 'Confirm Play Date', player_booking_url(booking), method: :patch, class:"btn btn-primary" %>
-	<% elsif state == "past-complete" || state == "past-payment" || state == "past-owner" %>
+		<%= link_to 'Confirm Play Date', player_booking_url(booking), method: :put, class:"btn btn-primary" %>
+	<% elsif state == "past-payment" || state == "past-owner" %>
+		<h5>Complete.</h5>
+	<% elsif state == "past-complete" %>
 		<h5>Complete.</h5>
 		<%= link_to 'Delete Booking', kitten_booking_path(id: booking, kitten_id: booking.kitten_id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-primary" %>
 	<% else %>

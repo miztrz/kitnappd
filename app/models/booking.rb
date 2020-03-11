@@ -4,10 +4,6 @@ class Booking < ApplicationRecord
   validates :start_time, :end_time, presence: true
   validate :end_time_after_start_time
 
-  def accepted?
-    self.accepted
-  end
-
   private
 
   def end_time_after_start_time

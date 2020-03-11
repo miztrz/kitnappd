@@ -1,35 +1,46 @@
 <% @page_title = @kitten.name %>
 
-<% if user_signed_in? && @kitten.user_id == current_user.id %>
-	<%= link_to 'Edit', edit_kitten_path(@kitten), class:"btn btn-primary btn-block" %>
-<% end %>
+<section class="container kitten-details">
+	<h2>Kitten Details</h2>
+	<div class="row d-flex">
+		<h5 class="col-sm-3">Owner</h5>
+		<h6 class="col-sm-9"><%= @kitten.user.name %></h6>
+		<h5 class="col-sm-3">Breed:</h5>
+		<h6 class="col-sm-9"><%= @kitten.breed %></h6>
+		<h5 class="col-sm-3">Daily rate</h5>
+		<h6 class="col-sm-9"><%= number_to_currency(@kitten.daily_rate) %></h6>
+		<h5 class="col-sm-3">Description</h5>
+		<h6 class="col-sm-9"><%= @kitten.description %></h6>
+	</div>
+</section> <!-- kitten-details -->
 
-
-<p>
-	<strong>Owner:</strong>
-	<%= @kitten.user.name %>
-</p>
-
-
-<p>
-  <strong>Breed:</strong>
-  <%= @kitten.breed %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @kitten.description %>
-</p>
-
-<p>
-  <strong>Daily rate:</strong>
-  <%= number_to_currency(@kitten.daily_rate) %>
-</p>
-
+<section class="container kitten-images">
+	<h2>Kitten pictures</h2>
 <%= render 'imagegallery' %>
-<%= link_to 'Back', _back_url, class:"btn btn-primary btn-block" %>
-<h2>Bookings</h2>
-<%= render @kitten.bookings %>
+</section>
+
+<section class="container kitten-bookings">
+	<% if @bookings_in.count + @bookings_out.count > 0 %>
+	<h2>Bookings</h2>
+	<% @bookings_in.each do |booking| %>
+		<%= render "bookings/booking-in", booking: booking %>
+	<% end %>
+	<% @bookings_out.each do |booking| %>
+		<%= render "bookings/booking-out", booking: booking %>
+	<% end %>
+		<% end %>
+</section>
+
+<section class="container kitten-requests">
 <% unless user_signed_in? && @kitten.user_id == current_user.id %>
-<%= render 'bookings/form' %>
+		<h2>Requests</h2>
+	<%= render 'bookings/form' %>
 <% end %>
+</section>
+
+<section class="container">
+	<% if user_signed_in? && @kitten.user_id == current_user.id %>
+		<%= link_to 'Edit', edit_kitten_path(@kitten), class:"btn btn-primary btn-block" %>
+	<% end %>
+	<%= link_to 'Back', _back_url, class:"btn btn-primary btn-block" %>
+</section>
