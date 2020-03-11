@@ -1,12 +1,13 @@
 <% if @bookings_out.exists? %>
 	<div class="booking-cards">
 		<% @bookings_out.each do |booking| %>
-			<div class="card border-primary mb-3 booking-card">
+			<div class="card border-primary booking-card">
 				<a href="<%= url_for(kitten_path(booking.kitten.id)) %>">
-					<div class="card-header d-flex justify-content-between text-white">
-						<h5><%= booking.kitten.name %></h5>
-						<h5><%= number_to_currency(booking.total) %></h5>
+					<div class="card-header d-flex justify-content-between">
+						<h3><%= booking.kitten.name %></h3>
+						<h4><%= number_to_currency(booking.total) %></h4>
 					</div>
+				</a>
 					<div class="card-body">
 						<div class="card-text d-flex justify-content-between text-white">
 							<p>Kitten Owner</p>
@@ -14,7 +15,7 @@
 						</div>
 						<div class="card-text d-flex justify-content-between text-white">
 						<p>Length of Booking</p>
-							<p><%= booking.title %></p>
+							<p><%= booking.length_human %></p>
 					</div>
 					<div class="card-text d-flex justify-content-between text-white">
 						<p>Start Date</p>
@@ -24,30 +25,8 @@
 						<p>End Date</p>
 						<p><%= booking.end_time.strftime("%A %e %b %Y") %></p>
 					</div>
-						<div class="card-text text-center">
-							<% if status(booking) == "accepted-pending" %>
-								<h5>Scheduled:</h5>
-									<h5><%= booking.start_time.strftime("%A %e %b %Y") %>.</h5>
-								<div class="container justify-items-center">
-								<%= link_to 'Edit Booking', kitten_path(booking.kitten.id), class:"btn btn-primary btn-block" %>
-								</div>
-							<% elsif status(booking) == "accepted-pastdate" %>
-								<h5>Completed.</h5>
-							<% elsif status(booking) == "notaccepted-pending" %>
-								<h5>Pending response from kitten owner.</h5>
-								<div class="container justify-items-center">
-								<%= link_to 'Edit Booking', kitten_path(booking.kitten.id), class:"btn btn-primary btn-block" %>
-								</div>
-							<% elsif status(booking) == "notaccepted-pastdate" %>
-								<h5>Kitten owner did not respond. Please try again.</h5>
-							<% else %>
-								<h5>Unknown issue. Please log a ticket.</h5>
-							<% end %>
-						</div>
-						
-<!--						TODO Update so that it loads the booking when going to kitten view page-->
+					<%= render 'bookings/booking-out-flags', booking: booking %>
 				</div>
-			</a>
 		</div>
 	<% end %>
 </div>

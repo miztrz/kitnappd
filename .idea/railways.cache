@@ -1,4 +1,8 @@
                                Prefix Verb   URI Pattern                                                                              Controller#Action
+                                 root GET    /                                                                                        page#home
+                            page_home GET    /page/home(.:format)                                                                     page#home
+                           page_about GET    /page/about(.:format)                                                                    page#about
+                       page_dashboard GET    /page/dashboard(.:format)                                                                page#dashboard
                      new_user_session GET    /users/sign_in(.:format)                                                                 devise/sessions#new
                          user_session POST   /users/sign_in(.:format)                                                                 devise/sessions#create
                  destroy_user_session DELETE /users/sign_out(.:format)                                                                devise/sessions#destroy
@@ -14,9 +18,6 @@
                                       PUT    /users(.:format)                                                                         devise/registrations#update
                                       DELETE /users(.:format)                                                                         devise/registrations#destroy
                                       POST   /users(.:format)                                                                         devise/registrations#create
-                kitten_booking_accept PUT    /kittens/:kitten_id/bookings/:booking_id/accept(.:format)                                bookings#accept
-                kitten_booking_reject PUT    /kittens/:kitten_id/bookings/:booking_id/reject(.:format)                                bookings#reject
-                  kitten_booking_paid PUT    /kittens/:kitten_id/bookings/:booking_id/paid(.:format)                                  bookings#paid
                       kitten_bookings GET    /kittens/:kitten_id/bookings(.:format)                                                   bookings#index
                                       POST   /kittens/:kitten_id/bookings(.:format)                                                   bookings#create
                    new_kitten_booking GET    /kittens/:kitten_id/bookings/new(.:format)                                               bookings#new
@@ -33,10 +34,11 @@
                                       PATCH  /kittens/:id(.:format)                                                                   kittens#update
                                       PUT    /kittens/:id(.:format)                                                                   kittens#update
                                       DELETE /kittens/:id(.:format)                                                                   kittens#destroy
-                            page_home GET    /page/home(.:format)                                                                     page#home
-                           page_about GET    /page/about(.:format)                                                                    page#about
-                       page_dashboard GET    /page/dashboard(.:format)                                                                page#dashboard
-                                 root GET    /                                                                                        page#home
+                      booking_payment GET    /bookings/:id/payment(.:format)                                                          bookings#payment
+                         paid_booking PATCH  /bookings/:id/paid(.:format)                                                             bookings#paid
+                      confirm_booking PATCH  /bookings/:id/confirm(.:format)                                                          bookings#confirm
+                        owner_booking PATCH  /bookings/:id/owner(.:format)                                                            bookings#owner
+                       player_booking PATCH  /bookings/:id/player(.:format)                                                           bookings#player
         rails_mandrill_inbound_emails POST   /rails/action_mailbox/mandrill/inbound_emails(.:format)                                  action_mailbox/ingresses/mandrill/inbound_emails#create
         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
            rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                     action_mailbox/ingresses/relay/inbound_emails#create

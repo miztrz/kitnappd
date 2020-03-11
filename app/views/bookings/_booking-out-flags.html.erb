@@ -1,0 +1,29 @@
+<div class="card-text text-center text-primary mb-3">
+	<% state = state(booking) %>
+	<% if state.start_with? "error" %>
+		<h5>Please log a ticket <a href="https://github.com/miztrz/kitnappd/issues">here</a> and quote error code <%= state.delete_prefix("error ") %>. We will resolve this as soon as possible.</h5>
+	<% elsif state == "future-payment" %>
+		<h5>Please pay to secure this kitten.</h5>
+		<%= link_to 'Payment', booking_payment_url(booking), method: :get, class:"btn btn-primary" %>
+	<% elsif state == "future-confirmation" %>
+		<h5>The kitten owner will confirm availability shortly. Thankyou for your patience.</h5>
+	<% elsif state == "future-booked" %>
+		<h5>Confirmed play date.</h5>
+	<% elsif state == "current-confirmed" %>
+		<h5>Active play date.</h5>
+	<% elsif state == "cancelled-payment" %>
+		<h5>Cancelled - Non payment.</h5>
+		<%= link_to 'Delete Booking', kitten_booking_path(id: booking, kitten_id: booking.kitten_id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-primary" %>
+	<% elsif state == "cancelled-confirmation" %>
+		<h5>Cancelled - The owner did not confirm. We will issue your refund within 24-48 hours.</h5>
+		<%= link_to 'Delete Booking', kitten_booking_path(id: booking, kitten_id: booking.kitten_id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-primary" %>
+	<% elsif state == "past-none" || state == "past-player" %>
+		<h5>Please confirm your play date was a success.</h5>
+		<%= link_to 'Confirm Play Date', player_booking_url(booking), method: :patch, class:"btn btn-primary" %>
+	<% elsif state == "past-complete" || state == "past-payment" || state == "past-owner" %>
+		<h5>Complete.</h5>
+		<%= link_to 'Delete Booking', kitten_booking_path(id: booking, kitten_id: booking.kitten_id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-primary" %>
+	<% else %>
+		<h5>Please log a ticket <a href="https://github.com/miztrz/kitnappd/issues">here</a> and quote error code BH100. We will resolve this as soon as possible.</h5>
+	<% end %>
+</div>

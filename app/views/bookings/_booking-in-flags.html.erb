@@ -1,0 +1,32 @@
+<div class="card-text text-center text-primary">
+	<% state = state(booking) %>
+	<% if state.start_with? "error" %>
+		<h5>Please log a ticket <a href="https://github.com/miztrz/kitnappd/issues">here</a> and quote error code <%= state.delete_prefix("error ") %>. We will resolve this as soon as possible.</h5>
+	<% elsif state == "future-payment" %>
+		<h5>Pending payment, no action required.</h5>
+	<% elsif state == "future-confirmation" %>
+		<h5>Please confirm kitten availability.</h5>
+		<%= link_to 'Confirm Booking', confirm_booking_url(booking), method: :patch, class:"btn btn-primary" %>
+	<% elsif state == "future-booked" %>
+		<h5>Confirmed play date.</h5>
+	<% elsif state == "current-confirmed" %>
+		<h5>Active play date.</h5>
+	<% elsif state == "cancelled-payment" %>
+		<h5>Cancelled - Non payment.</h5>
+		<%= link_to 'Delete Booking', kitten_booking_path(id: booking, kitten_id: booking.kitten_id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-primary" %>
+	<% elsif state == "cancelled-confirmation" %>
+		<h5>You did not respond in time.</h5>
+	<% elsif state == "past-none" || state == "past-owner" %>
+		<h5>Please confirm your kitten has been returned to you in full health.</h5>
+		<%= link_to 'Confirm Kitten Return', owner_booking_url(booking), method: :patch, class:"btn btn-primary" %>
+	<% elsif state == "past-player" %>
+		<h5>Player pending confirmation of completed play date.</h5>
+	<% elsif state == "past-payment" %>
+		<h5>Payment release pending, expected 24-48 hour turnaround.</h5>
+	<% elsif state == "past-complete" %>
+		<h5>Complete.</h5>
+		<%= link_to 'Delete Booking', kitten_booking_path(id: booking, kitten_id: booking.kitten_id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-primary" %>
+	<% else %>
+		<h5>Please log a ticket <a href="https://github.com/miztrz/kitnappd/issues">here</a> and quote error code BH100. We will resolve this as soon as possible.</h5>
+	<% end %>
+</div>
