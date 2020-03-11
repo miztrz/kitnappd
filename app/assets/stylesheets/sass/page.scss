@@ -2,6 +2,17 @@
 
 // Home page
 
+.home-grid {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: 1fr;
+  margin: 0 auto 0 auto;
+  }
+
+.home-item {
+  
+  }
+
 .home-youtube {
   position: relative;
   padding-bottom: 56.25%; /* 16:9 */

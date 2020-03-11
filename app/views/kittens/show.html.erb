@@ -20,13 +20,15 @@
 </section>
 
 <section class="container kitten-bookings">
-	<% if @bookings_in.count + @bookings_out.count > 0 %>
 	<h2>Bookings</h2>
+	<% unless @bookings_in == false %>
 	<% @bookings_in.each do |booking| %>
 		<%= render "bookings/booking-in", booking: booking %>
 	<% end %>
+		<% end %>
+	<% unless @bookings_out == false %>
 	<% @bookings_out.each do |booking| %>
-		<%= render "bookings/booking-out", booking: booking %>
+		<%= render "bookings/booking-out" , booking: booking %>
 	<% end %>
 		<% end %>
 </section>

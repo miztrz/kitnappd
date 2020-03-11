@@ -8,9 +8,14 @@ class KittensController < ApplicationController
   end
 
   def show
-    @bookings_in = Booking.where(bookings: { kitten_id: @kitten.id} ).
+    if user_signed_in?
+      @bookings_in = Booking.where(bookings: { kitten_id: @kitten.id} ).
                    joins(:kitten).where(kittens: { user_id: current_user.id} )
-    @bookings_out = Booking.where(user_id: current_user.id).where(kitten_id: @kitten.id)
+      @bookings_out = Booking.where(user_id: current_user.id).where(kitten_id: @kitten.id)
+    else
+      @bookings_in = false
+      @bookings_out = false
+    end
   end
 
   def new
