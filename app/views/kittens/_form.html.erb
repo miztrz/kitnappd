@@ -1,7 +1,8 @@
-<%= form_with(model: kitten, local: true) do |form| %>
+<section class="container">
+	<%= form_with(model: kitten, local: true) do |form| %>
 	
 	<% if kitten.errors.any? %>
-		<div id="error_explanation" class="alert alert-warning alert-dismissible fade show" role="alert" >
+		<div id="error_explanation" class="alert alert-warning alert-dismissible fade show" role="alert">
 			<h5><%= pluralize(kitten.errors.count, "error") %> prohibited this kitten from being saved:</h5>
 			<ul>
 				<% kitten.errors.full_messages.each do |message| %>
@@ -12,21 +13,21 @@
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
-	<% end %>l
+	<% end %>
   <div class="form-group row">
     <%= form.label :name, class: "col-sm-2 col-form-label"  %>
 	  <div class="input-group col-sm-4 mb-3">
-    <%= form.text_field :name, class: "form-control col-sm-4", placeholder: "Kitten Name" %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Kitten Name" %>
 	  </div>
     <%= form.label :breed, class: "col-sm-2 col-form-label"  %>
 	  <div class="input-group col-sm-4 mb-3">
-    <%= form.text_field :breed, class: "form-control col-sm-4", placeholder: "Kitten Breed" %>
+    <%= form.text_field :breed, class: "form-control", placeholder: "Kitten Breed" %>
 	  </div>
   </div>
   <div class="form-group row">
     <%= form.label :description, class: "col-sm-2 col-form-label"  %>
-	  <div class="input-group col-sm-4 mb-3">
-    <%= form.text_area :description, class: "form-control col-sm-10" %>
+	  <div class="input-group  col-sm-10 mb-3">
+    <%= form.text_area :description, class: "form-control" %>
 	  </div>
   </div>
   <div class="form-group row">
@@ -48,7 +49,9 @@
 	<% if kitten.images.attached? %>
 		<%= render 'imagegallery' %>
 	<% end %>
-	<div class="actions">
-    <%= form.submit class:"btn btn-primary btn-block col-12" %>
+	<div class="form-group row d-flex justify-content-around">
+    <%= form.submit class:"btn btn-outline-primary" %>
+		<%= link_to 'Back', kittens_path, class: "btn btn-outline-primary" %>
   </div>
 <% end %>
+</section>

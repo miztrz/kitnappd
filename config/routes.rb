@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-	root 'page#home'
+	root 'kittens#index'
 
-	get 'page/home'
-	get 'page/about'
-	get 'page/dashboard'
+	get 'page/dashboard', as: :dashboard
 
 	devise_for :users
 

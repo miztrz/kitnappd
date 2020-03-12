@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2020_03_11_125846) do
   end
 
   create_table "kittens", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "name"
     t.string "breed"
     t.text "description"
@@ -62,11 +63,11 @@ ActiveRecord::Schema.define(version: 2020_03_11_125846) do
     t.boolean "active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
     t.index ["user_id"], name: "index_kittens_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -79,7 +80,6 @@ ActiveRecord::Schema.define(version: 2020_03_11_125846) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name", default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -89,3 +89,5 @@ ActiveRecord::Schema.define(version: 2020_03_11_125846) do
   add_foreign_key "bookings", "users"
   add_foreign_key "kittens", "users"
 end
+
+puts "Schema loaded successfully, please run 'rails db:seed' to fill with temp data."

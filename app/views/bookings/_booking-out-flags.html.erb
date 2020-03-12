@@ -1,4 +1,4 @@
-<div class="card-text text-center text-primary mb-3">
+<div class="card-text text-center text-primary row d-flex justify-content-center">
 	<% state = state(booking) %>
 	<% if state.start_with? "error" %>
 		<h5>Please log a ticket <a href="https://github.com/miztrz/kitnappd/issues">here</a> and quote error code <%= state.delete_prefix("error ") %>. We will resolve this as soon as possible.</h5>

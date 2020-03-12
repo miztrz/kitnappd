@@ -1,6 +1,2 @@
-<h1>Editing </h1>
-
+<% @page_title = "Editing #{@kitten.name}" %>
 <%= render 'form', kitten: @kitten %>
-
-<%= link_to 'Show', @kitten %> |
-<%= link_to 'Back', kittens_path %>
