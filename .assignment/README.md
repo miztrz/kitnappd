@@ -2,7 +2,7 @@
 
 Hi there! Thanks for reading my README. I'm sure you are very excited to be viewing this, and I'm hoping you'll still be thrilled once I've shown you how this app is going to change your life forever.
 
-When I woke up this morning, I was struck by a thought that it would be marvellous to be able to have a kitten tea party. You see, I have a pet kitten. He's nearly 4 months old, and gee is he cute. Cute enough that I want more! But sadly I cannot afford more (nor will my boyfriend be particularly thrilled by the idea).
+When I was looking for inspiration for my application, I was struck by a thought that it would be marvellous to be able to have a kitten tea party. You see, I have a pet kitten. He's nearly 4 months old, and gee is he cute. Cute enough that I want more! But sadly I cannot afford more (nor would my boyfriend be particularly thrilled by the idea).
 
 My app - kitnappd (geddit? its a kitten app!) will allow users to loan their kittens to other users in their area for kitten tea party's and other such shenanigans [[1][1]].
 
@@ -29,7 +29,7 @@ OPTIMIZE - Make sure the repository gets opened to public once assignment is han
  * Screenshots
  * Target audience 
  * Tech stack (e.g. html, css, deployment platform, etc)
- 
+
 ## R12 - User stories for your _app_
 
 ## R13 - Wireframes for your _app_
