@@ -15,10 +15,9 @@
 		</section>
 		<section class="dash-bookings">
 			<h2>Play dates</h2>
-<!--			TODO - Fix the code to show incoming booking requests-->
-			<h5>Requested play dates</h5>
+			<h4 class="font-italic">Requested play dates</h4>
 			<%= render 'bookings/booking-out', bookings_out: @bookings_out %>
-			<h5>Booking requests</h5>
+			<h4 class="font-italic">Booking requests</h4>
 			<%= render 'bookings/booking-in', bookings_in: @bookings_in %>
 		</section>
 	</div>

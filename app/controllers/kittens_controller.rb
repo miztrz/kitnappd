@@ -1,5 +1,5 @@
 class KittensController < ApplicationController
-  before_action :set_kitten, only: [:show, :edit, :update, :destroy]
+  before_action :set_kitten, only: [:show, :edit, :update, :destroy, :paws]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :check_user, only: [:edit, :update, :destroy]
 
@@ -58,6 +58,23 @@ class KittensController < ApplicationController
     respond_to do |format|
       format.html { redirect_to kittens_url, notice: 'Kitten was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def paws
+    if @kitten.active
+      @kitten.active = false
+      state = "pawsed"
+    else
+      @kitten.active = true
+      state = "unpawsed"
+    end
+    respond_to do |format|
+      if @kitten.save
+        format.html { redirect_to @kitten, notice: "Kitten was successfully #{state}." }
+      else
+        format.html { render :new }
+      end
     end
   end
 
