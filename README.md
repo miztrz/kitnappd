@@ -11,7 +11,7 @@ When I was looking for inspiration for my application, I was struck by a thought
 
 My app - kitnappd (geddit? its a kitten app!) will allow users to loan their kittens to other users in their area for kitten tea party's and other such shenanigans *.
 
-*\*Shenanigans to be defined by the lawyers prior to the app's public launch date.*
+*\ *Shenanigans to be defined by the lawyers prior to the app's public launch date.*
 
 ---
 
