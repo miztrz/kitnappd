@@ -1,46 +1,28 @@
-# T2A2 Marketplace Application
+# Ruby on Rails Marketplace Application
 
-[TOC]
+I wrote this whilst enrolled at Coder Academy (Melbourne) for my Term 2 assignment, which we were given the guidelines of "must be a 2-way marketplace application, and it must be written in Rails". I came up with the idea of "kitnappd" when I was looking at placeholder image sites, and found placekitten.com. This app allows users to rent their own kittens out to other users, or to rent kittens as needed. The ethics are a little shaky, but thats why its not an actual marketplace. I really enjoyed creating this app though, and I'm happy to have it as part of my portfolio as such.
 
----
 
-## R7 - Identification of the _problem_ you are trying to solve by building this particular marketplace _app_.
+## My sales pitch
 
 Hi there! Thanks for reading my README. I'm sure you are very excited to be viewing this, and I'm hoping you'll still be thrilled once I've shown you how this app is going to change your life forever.
 
 When I was looking for inspiration for my application, I was struck by a thought that it would be marvellous to be able to have a kitten tea party. You see, I have a pet kitten. He's nearly 4 months old, and gee is he cute. Cute enough that I want more! But sadly I cannot afford more (nor would my boyfriend be particularly thrilled by the idea).
 
-My app - kitnappd (geddit? its a kitten app!) will allow users to loan their kittens to other users in their area for kitten tea party's and other such shenanigans [[1][1]].
+My app - kitnappd (geddit? its a kitten app!) will allow users to loan their kittens to other users in their area for kitten tea party's and other such shenanigans *.
 
-[1]: Shenanigans to be defined by the lawyers prior to the app's public launch date.
-
----
-
-## R8 - Why is it a _problem_ that needs solving?
-
-I'd like an easy way to increase my kitten ratio per household in the short term, without the 20 year commitment that comes along with owning another cat. That is a problem that definitely needs solving.
+*: Shenanigans to be defined by the lawyers prior to the app's public launch date.
 
 ---
 
-## R9 - A link (URL) to your deployed _app_ (i.e. website)
-
-[kitnappd](https://kitnappd.herokuapp.com/) - Deployed on Heroku.
-
----
-
-## R10 - A link to your GitHub repository (repo). _Ensure the repo is accessible by your Educators_
-
-[github.com/miztrz/kitnappd](https://github.com/miztrz/kitnappd)
-
----
-
-## R11 - Description of your marketplace _app_ (website), including:
+## Description of my marketplace _app_ , including:
  * Purpose
  * Functionality / features
  * Sitemap 
- * Screenshots
  * Target audience 
  * Tech stack (e.g. html, css, deployment platform, etc)
+ * Entity Relationship Diagram
+ * Application Work Flow
 
 ### Purpose
 
@@ -73,26 +55,6 @@ Owners have to confirm a booking once submitted by a player. This can be done vi
 <br><cite>kitnappd Database Diagram</cite>
 </div>
 
-### Screenshots
-
-![dashboard-desktop](docs/dashboard-desktop.png)
-
-![dashboard-mobile](docs/dashboard-mobile.png)
-
-![home-screen-desktop](docs/home-screen-desktop.png)
-
-![home-screen-mobile](docs/home-screen-mobile.png)
-
-![images-modal](docs/images-modal.png)
-
-![kitten-listing](docs/kitten-listing.png)
-
-![kitten-confirm](docs/kitten-confirm.png)
-
-![kitten-card](docs/kitten-card.png)
-
-![kitten-pawsed](docs/kitten-pawsed.png)
-
 ### Target audience
 
 My target audience is kitten lovers everywhere! For those of us who hate it when our kittens grow up into ungrateful cats, who just want those playful daft things that kittens manage to be.
@@ -111,151 +73,14 @@ This application has been deployed using the below tech stack.
 | ![github](docs/icons/github.png)/![heroku](docs/icons/heroku.png) | I deployed my application using Github / Heroku. Once I had setup both, it was easy to auto deploy from Github to Heroku, and it meant all I needed to do was push to Github and then rub `heroku run rails db:migrate` if I had made any database changes. |
 | ![aws_s3](docs/icons/aws_s3.png)                             | All images that are uploaded in this application are uploaded to a private Amazon S3 bucket, and served from there when needed. |
 
----
-
-## R12 - User stories for your _app_
-
-Users should be able to:
-
-* Log in and see their active play dates in an easy to read format
-* View kitten listings from their mobile phone
-* Add new kittens, edit existing kittens and delete ones who have grown up into cats
-* Request bookings, and submit payments through this app
-* Update their own details at any time
-
----
-
-## R13 - Wireframes for your _app_
-
-![wireframe-cards](docs/wireframe-cards.jpg)
-
-![wireframe-desktop](docs/wireframe-desktop.jpg)
-
----
-
-## R14 - An ERD for your _app_
+### Entity Relationship Diagram
 
 <div style="text-align:center;background-color:lightgrey;border:5px solid lightgrey;margin:10px">
 <img src="docs/database_diagram.png" alt="Entity Relationship Diagram" />
 <br><cite>kitnappd Database Diagram</cite>
 </div>
----
 
-## R15 - Explain the different high-level components (abstractions) in your _app_
-
-At a high level the app is made up from kitten listings (kitten cards) which are also used to view the kittens on the users dashboards. This alllows users to view the kittens show page, where they can further interact with the kitten listings.
-
-I also have kitten booking cards, which appear on the users dashboards as well as the kitten pages, allowing users to see where at any point in time their bookings are, and to update accordingly.
-
----
-
-## R16 - Detail any third party services that your _app_ will use
-
-My app uses Amazon S3 for image storage, Github for remote code repository, and is deployed onto the internet using Heroku.
-
----
-
-## R17 - Describe your projects _models_ in terms of the relationships (active record associations) they have with each other
-
-There are 3 main models - the kitten model (which is a very simple model, mostly consisting of the normal CRUD application requirements), and the bookings model (a somewhat more complex model, allowing bookings to be modified by both the players and the owners). The users model controls authentication and authorisation.
-
----
-
-## R18 - Discuss the database relations to be implemented in your application
-
-Both the Kittens table and the Bookings table have foreign keys to the user table, allowing the users to own either a booking or a kitten. Through the kittens table, owners are able to modify bookings as allowed so that the workflow proceeds as needed.
-
----
-
-## R19 - Provide your database schema design
-
-```ruby
-ActiveRecord::Schema.define(version: 2020_03_11_125846) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "active_storage_attachments", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
-    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index %w(record_type record_id name blob_id), name: "index_active_storage_attachments_uniqueness", unique: true
-  end
-
-  create_table "active_storage_blobs", force: :cascade do |t|
-    t.string "key", null: false
-    t.string "filename", null: false
-    t.string "content_type"
-    t.text "metadata"
-    t.bigint "byte_size", null: false
-    t.string "checksum", null: false
-    t.datetime "created_at", null: false
-    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
-  end
-
-  create_table "bookings", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "kitten_id", null: false
-    t.boolean "paid", default: false
-    t.boolean "confirmed", default: false
-    t.boolean "owner", default: false
-    t.boolean "player", default: false
-    t.boolean "fundsreleased", default: false
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.string "length_human"
-    t.money "total", scale: 2
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["kitten_id"], name: "index_bookings_on_kitten_id"
-    t.index ["user_id"], name: "index_bookings_on_user_id"
-  end
-
-  create_table "kittens", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "name"
-    t.string "breed"
-    t.text "description"
-    t.money "daily_rate", scale: 2
-    t.boolean "active", default: true
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_kittens_on_user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name", default: "", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet "current_sign_in_ip"
-    t.inet "last_sign_in_ip"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "bookings", "kittens"
-  add_foreign_key "bookings", "users"
-  add_foreign_key "kittens", "users"
-end
-
-puts "Schema loaded successfully, please run 'rails db:seed' to fill with temp data."
-```
-
----
-
-## R20 - Describe the way tasks are allocated and tracked in your project
+### Application Work Flow
 
 ![workflow](docs/workflow.png)
 
