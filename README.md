@@ -17,12 +17,12 @@ My app - kitnappd (geddit? its a kitten app!) will allow users to loan their kit
 
 ## Application Details
  * [Purpose](#purpose)
- * Functionality / features
- * Sitemap 
- * Target audience 
- * Tech stack (e.g. html, css, deployment platform, etc)
- * Entity Relationship Diagram
- * Application Work Flow
+ * [Functionality / features](#functionality)
+ * [Sitemap](#sitemap)
+ * [Target audience](#target-audience)
+ * [Tech stack](#tech-stack)
+ * [Entity Relationship Diagram](#erd)
+ * [Application Work Flow](#work-flow)
  
 ---
 
@@ -30,7 +30,7 @@ My app - kitnappd (geddit? its a kitten app!) will allow users to loan their kit
 
 This application has been built to allow users an easy way to rent their kittens, or rent kittens that are local to them. I've defined the user roles as "player" (users who rent a kitten) and "owner" (users who rent their kittens to others). Users have free access to both roles, but this definition allows me to differentiate the dual side of the marketplace application.
 
-### Functionality / Features
+### [Functionality / features](#functionality)
 
 #### Application features
 
@@ -50,18 +50,18 @@ Owners are able to list, edit and delete kittens from their accounts. This can a
 
 Owners have to confirm a booking once submitted by a player. This can be done via the dashboard or the kitten listing itself. After the play date, owners only have to confirm that the kitten has been returned in full health, at which point (providing the player has confirmed play date was completed successfully) funds are released to them. After the funds are released to the owner, the player and owner are both able to delete the booking (to avoid cluttering their dashboards).
 
-### Sitemap
+### [Sitemap](#sitemap)
 
 <div style="text-align:center;background-color:lightgrey;border:5px solid lightgrey;margin:10px">
 <img src="docs/kitnappd-sitemap.png" alt="kitnappd Sitemap" />
 <br><cite>kitnappd Database Diagram</cite>
 </div>
 
-### Target audience
+### [Target audience](#target-audience)
 
 My target audience is kitten lovers everywhere! For those of us who hate it when our kittens grow up into ungrateful cats, who just want those playful daft things that kittens manage to be.
 
-### Tech stack
+### [Tech stack](#tech-stack)
 
 This application has been deployed using the below tech stack.
 
@@ -75,14 +75,14 @@ This application has been deployed using the below tech stack.
 | ![github](docs/icons/github.png)/![heroku](docs/icons/heroku.png) | I deployed my application using Github / Heroku. Once I had setup both, it was easy to auto deploy from Github to Heroku, and it meant all I needed to do was push to Github and then rub `heroku run rails db:migrate` if I had made any database changes. |
 | ![aws_s3](docs/icons/aws_s3.png)                             | All images that are uploaded in this application are uploaded to a private Amazon S3 bucket, and served from there when needed. |
 
-### Entity Relationship Diagram
+### [Entity Relationship Diagram](#erd)
 
 <div style="text-align:center;background-color:lightgrey;border:5px solid lightgrey;margin:10px">
 <img src="docs/database_diagram.png" alt="Entity Relationship Diagram" />
 <br><cite>kitnappd Database Diagram</cite>
 </div>
 
-### Application Work Flow
+### [Application Work Flow](#work-flow)
 
 <div style="text-align:center;background-color:lightgrey;border:5px solid lightgrey;margin:10px">
 <img src="docs/workflow.png" alt="Application Work Flow" />
