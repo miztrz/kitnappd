@@ -15,16 +15,18 @@ My app - kitnappd (geddit? its a kitten app!) will allow users to loan their kit
 
 ---
 
-## Description of my marketplace _app_ , including:
- * Purpose
+## Application Details
+ * [Purpose](#purpose)
  * Functionality / features
  * Sitemap 
  * Target audience 
  * Tech stack (e.g. html, css, deployment platform, etc)
  * Entity Relationship Diagram
  * Application Work Flow
+ 
+---
 
-### Purpose
+### [Purpose](#purpose)
 
 This application has been built to allow users an easy way to rent their kittens, or rent kittens that are local to them. I've defined the user roles as "player" (users who rent a kitten) and "owner" (users who rent their kittens to others). Users have free access to both roles, but this definition allows me to differentiate the dual side of the marketplace application.
 
@@ -82,6 +84,9 @@ This application has been deployed using the below tech stack.
 
 ### Application Work Flow
 
-![workflow](docs/workflow.png)
+<div style="text-align:center;background-color:lightgrey;border:5px solid lightgrey;margin:10px">
+<img src="docs/workflow.png" alt="Application Work Flow" />
+<br><cite>kitnappd Work Flow</cite>
+</div>
 
 As per the workflow above, users are able to interact with the tasks through the booking cards on their dashboard or on the kitten view page.
