@@ -9,9 +9,7 @@ Hi there! Thanks for reading my README. I'm sure you are very excited to be view
 
 When I was looking for inspiration for my application, I was struck by a thought that it would be marvellous to be able to have a kitten tea party. You see, I have a pet kitten. He's nearly 4 months old, and gee is he cute. Cute enough that I want more! But sadly I cannot afford more (nor would my boyfriend be particularly thrilled by the idea).
 
-My app - kitnappd (geddit? its a kitten app!) will allow users to loan their kittens to other users in their area for kitten tea party's and other such shenanigans *.
-
-*\ *Shenanigans to be defined by the lawyers prior to the app's public launch date.*
+My app - kitnappd (geddit? its a kitten app!) will allow users to loan their kittens to other users in their area for kitten tea party's and other such shenanigans.
 
 ---
 
